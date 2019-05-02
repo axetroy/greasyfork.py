@@ -88,17 +88,6 @@ class GreasyforkSpider(Spider):
 
         yield item
 
-        # with open(r'./dist/data.csv', 'a') as f:
-        #     writer = csv.writer(f)
-        #     writer.writerow([
-        #         author,
-        #         name,
-        #         installed_today,
-        #         installed_total,
-        #         created_at,
-        #         updated_at,
-        #         domain + download_url if download_url is not None else None
-        #     ])
     # 解析用户列表
     def parse(self, response):
 

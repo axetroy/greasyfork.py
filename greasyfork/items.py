@@ -14,5 +14,5 @@ class GreasyforkItem(scrapy.Item):
     installed_today = scrapy.Field()  # 今日安装量
     installed_total = scrapy.Field()  # 总安装量
     created_at = scrapy.Field()  # 创建于
-    updated_at = scrapy.Field()  # 更新与
+    updated_at = scrapy.Field()  # 更新于
     download_url = scrapy.Field()  # 下载地址
