@@ -54,6 +54,14 @@ class GreasyforkSpider(Spider):
         for index, link in enumerate(scriptsLink):
             yield response.follow(domain + link, self.parseScript, headers=HEADERS)
 
+        # 如果用户的脚本有很多，就会很翻页
+        next_page_path = response.selector.xpath(
+            '//a[@class="next_page"]/@href').extract_first()
+
+        if next_page_path is not None:
+            next_page_url = domain + next_page_path
+            yield response.follow(next_page_url, self.parseUserScript, headers=HEADERS)
+
     def parseScript(self, response):
         stat = response.selector.xpath(
             '//dl[@id="script-stats"]'

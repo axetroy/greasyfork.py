@@ -18,14 +18,11 @@ ITEM_PIPELINES = {
     'greasyfork.pipelines.GreasyforkPipeline': 1
 }
 
+
+
 # 7 天内不重复下载文件
 FILES_EXPIRES = 7
 
 FILES_STORE = './dist/scripts'
 
 DOWNLOAD_DELAY = 0.25
-
-# IMAGES_THUMBS = {  # 缩略图的尺寸，设置这个值就会产生缩略图
-#     'small': (50, 50),
-#     'big': (200, 200),
-# }
