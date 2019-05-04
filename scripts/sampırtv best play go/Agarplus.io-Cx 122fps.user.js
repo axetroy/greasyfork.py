@@ -1,0 +1,62 @@
+// ==UserScript==
+// @name         Agarplus.io-Cx 122fps
+// @namespace    HeadshoT
+// @version      1
+// @description  By HeadshoTAgarplus.io-Cx 122fps
+// @author       HeadshoT
+// @match        http://agar.io/
+// @grant        none
+// ==/UserScript==
+'use strict';
+
+//presets
+setShowMass(true); // Show your mass
+setDarkTheme(true); // Enable Dark theme by default
+$("#nick").val("♥нєαdѕнσт♥"); // SET  yYOUR NAME - / MAIS TON NOM ICI
+
+var SplitInterval;122
+var MacroInterval;
+var SplitDebounce = false;
+var MacroDebounce = false;
+$(document).on('keydown', function(input) {
+    console.log("got keydown")
+    if (input.keyCode == 20) {
+        if (SplitDebounce) {
+            return;
+        }
+        SplitDebounce = true;
+        SplitInterval = setInterval(function() {
+            $("body").trigger($.Event("keydown", {
+                keyCode: 32
+            }));
+            $("body").trigger($.Event("keyup", {
+                keyCode: 32
+            }));
+        }, 0);
+    } else if (input.keyCode == 88) {
+  if (MacroDebounce) {
+            return;
+        }
+        MacroDebounce = true;
+        MacroInterval = setInterval(function() {
+            $("body").trigger($.Event("keydown", {
+                keyCode: 87
+            }));
+            $("body").trigger($.Event("keyup", {
+                keyCode: 87
+            }));
+        }, 0);
+ }
+})
+
+$(document).on('keyup', function(input) {
+    if (input.keyCode == 20) {
+        SplitDebounce = false;
+        clearInterval(SplitInterval);
+        return;
+    } else if (input.keyCode == 88) {
+        MacroDebounce = false;
+        clearInterval(MacroInterval);
+        return;
+    }
+}

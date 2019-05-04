@@ -1,0 +1,11 @@
+// ==UserScript==
+// @name         fontChange
+// @namespace    https://github.com/yegorgunko/shikme-tools
+// @version      0.3
+// @description  Change chat font
+// @author       Yegor Gunko
+// @match        https://shikme.ru/
+// @icon         https://shikme.ru/default_images/icon.png?v=1528136794
+// @grant        none
+// ==/UserScript==
+const fontChange=()=>{const t={url:"https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,900&subset=cyrillic,cyrillic-ext,latin-ext",css:"Roboto, sans-serif"},e=JSON.parse(window.localStorage.getItem("fontOptions"))||t,n=document.createElement("style");n.type="text/css",n.id="customFontStyle";const o=`@import url("${e.url}")body,input,textarea,button{font-family:${e.css}!important}`;n.appendChild(document.createTextNode(o)),document.head.appendChild(n),document.getElementById("chat_left_menu").innerHTML+='<div class="list_element left_item"><div id="customFont" class="left_item_in"><i id="customFontIcon" class="fa fa-font menui"></i>Шрифт</div></div>',document.body.addEventListener("click",n=>{if(["customFont","customFontIcon"].indexOf(n.target.id)>-1){const n=document.getElementById("small_modal");document.getElementById("small_modal_content").innerHTML=`<div class=pad_box><div class=boom_form><div class=chat_settings><p class=label>Ссылка на шрифт</p><input id=fontUrlInput type=url class=full_input value="${e.url}" placeholder="${t.url}"></div><div class=chat_settings><p class=label>CSS шрифта</p><input id=fontCssInput class=full_input type=text value="${e.css}" placeholder="${t.css}"></div></div><button id=saveFontOptions type=button class="reg_button theme_btn">Сохранить</button></div>`,n.style.display="block";const o=document.getElementById("fontUrlInput"),s=document.getElementById("fontCssInput"),l=document.getElementById("saveFontOptions"),i=()=>{document.getElementById("customFontStyle").innerHTML=`@import url("${o.value}")body,input,textarea,button{font-family:${s.value}!important}`};o.addEventListener("input",i),s.addEventListener("input",i),l.addEventListener("click",()=>{window.localStorage.setItem("fontOptions",JSON.stringify({url:o.value||t.url,css:s.value||t.css})),alert("Настройки были успешно сохранены")})}})};document.addEventListener("DOMContentLoaded",fontChange(),!1);

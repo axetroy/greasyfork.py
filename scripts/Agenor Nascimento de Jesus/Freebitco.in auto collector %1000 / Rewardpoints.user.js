@@ -1,0 +1,95 @@
+// ==UserScript==
+// @name         Freebitco.in auto collector %1000 / Rewardpoints
+// @namespace    http://www.youtube.com/c/MogiHostTutoriais
+// @version      0.1 
+// @description  Autoclaim Freebitco.in
+// @author       MOGIHOST
+// @match        https://freebitco.in/*
+// @grant        none
+// @license MIT
+// ==/UserScript==
+
+(function() {
+    'use strict';
+var body = $('body');
+
+$('#play_without_captchas_button').click() // Solve/change Captcha with Rewardpoints, disable the line with // if you dont want more
+var count_min = 1;
+
+
+var points = {};
+
+
+
+if ($('#free_play_form_button').is(':visible'))
+
+setTimeout(function(){ $('#free_play_form_button').click();},2000);
+
+if ($('.close-reveal-modal').is(':visible'))
+
+setTimeout(function(){ $('.close-reveal-modal').clic-jk(); },2000);
+
+
+
+var reward = {};
+
+reward.select = function() {
+
+reward.points = parseInt($('.user_reward_points').text().replace(',',""));
+reward.bonustime = {};
+    if ($("#bonus_container_free_points").length != 0) {
+        reward.bonustime.text = $('#bonus_span_free_points').text();
+        reward.bonustime.hour = parseInt(reward.bonustime.text.split(":")[0]);
+        reward.bomustime.min = parseInt(reward.bonustime.text.split(":")[1]);
+        reward.bonustime.sec = parseInt(reward.bonustime.text.split(":")[2]);
+        reward.bonustime.current = reward.bonustime.hour * 3600 + reward.bonustime.min * 60 + reward.bonustime.sec;
+        } else
+            reward.bonustime.current = 0;
+
+    console.log(reward.bonustime.current);
+    if (reward.bonustime.current !== 0) {
+        console.log(reward.bonustime.current);
+    } else {
+        if (reward.points < 12) {
+            console.log("waiting for 12 points");
+        }
+        else if (reward.points < 120) {
+            console.log("waiting for 60 points");
+            RedeemRPProduct('free_points_1');
+        }
+        else if (reward.points < 600) {
+            console.log("waiting for 120 points");
+            RedeemRPProduct('free_points_10');
+        }
+        else if (reward.points < 1200) {
+            console.log("waiting for 600 points");
+            RedeemRPProduct('free_points_50');
+        }
+        else {
+            console.log("100 Free points per roll active");
+            RedeemRPProduct('free_points_100');
+        }
+        if ($('#bonus_span_fp_bonus').length === 0)
+            if (reward.points >= 4201)
+                RedeemRPProduct('fp_bonus_1000');
+    }
+};
+body.prepend(
+     $('<div/>').attr('style',"position:fixed;top:45px;left:0;z.index:999;width:350px;background-color:DarkGreen;color:white; text-align: left;")
+            .append(
+                $('<div/>').attr('id','autofaucet')
+                    .append($('<p/>').attr('style','text-decoration:underline;').text("Freebitco.in auto roll 1000% by MOGIHOST"))
+                    .append($('<p/>').text("Se você gostaou, faça uma doação para"))
+                    .append($('<p/>').text("1LDa7LYRdVyPrZEWew5WaVBca1hm8Udi5u"))
+                    .append($('<p/>').text("(Clic para copiar)"))
+                    .append($('<p/>')
+                )
+        )
+
+).prepend($('<style/>')
+          .text("#autofaucet p { margin: 0; margin-left: 2px; text-align: left; }")
+          );
+setTimeout(reward.select,1000);
+setInterval(reward.select,60000);
+    // Your code here...
+})();

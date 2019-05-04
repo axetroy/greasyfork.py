@@ -1,0 +1,80 @@
+//© 2017. D4VOL
+// ==UserScript==
+// @name         BUBLA.IO TRICKS
+// @namespace    http://tampermonkey.net/
+// @version      1.0
+// @description  BUBLA MACRO - W=FEED - SHIFT =TRICKSPLIT - Z =TRIPLESPLIT - Q =DOUBLESPLIT - A =FREEZE CELL If you lock any of these buttons, it will continue to split
+// @author       D4vOl
+// @match        http://bubla.io/login.php
+// @run-at       document-end
+// @grant        none
+// ==/UserScript==
+
+window.addEventListener('keydown', keydown);
+window.addEventListener('keyup', keyup);
+
+var EjectDown = false;
+
+var speed = 25; //in ms
+document.getElementById("instructions").innerHTML += "<center><span class='text-muted'><span data-itr='instructions_A'> Press <b>A</b> to Freeze Cell (Stop Movement)</span></span></center>";
+document.getElementById("instructions").innerHTML += "<center><span class='text-muted'><span data-itr='instructions_D'> Press <b>Q</b> to Doublesplit (Split 3x)</span></span></center>";
+document.getElementById("instructions").innerHTML += "<center><span class='text-muted'><span data-itr='instructions_Z'> Press <b>Z</b> to Triplesplit (Split 3x)</span></span></center>";
+document.getElementById("instructions").innerHTML += "<center><span class='text-muted'><span data-itr='instructions_E'> Press <b>SHIFT</b> to Tricksplit (Split 4x)</span></span></center>";
+function keydown(event) {
+    if (event.keyCode == 87 && EjectDown === false) { // key W
+        EjectDown = true;
+        setTimeout(eject, speed);
+        }
+    if (event.keyCode == 32) { //key SPACE
+        split();
+        setTimeout(split, speed);
+         }
+     if (event.keyCode == 90) { //key Z
+        split();
+        setTimeout(split, speed);
+        setTimeout(split, speed*2);
+          }
+     if (event.keyCode == 81) { //key Q
+        split();
+        setTimeout(split, speed);
+        setTimeout(split, speed*2);
+    }
+     if (event.keyCode == 16) { //key SHIFT
+        split();
+        setTimeout(split, speed);
+        setTimeout(split, speed*2);
+        setTimeout(split, speed*3);
+         }
+     if (event.keyCode == 69) { //key E
+        split();
+        setTimeout(split, speed);
+        setTimeout(split, speed*2);
+        setTimeout(split, speed*3);
+     }
+    if (event.keyCode == 65) { //key A
+        X = window.innerWidth/2;
+        Y = window.innerHeight/2;
+        $("canvas").trigger($.Event("mousemove", {clientX: X, clientY: Y}));
+    }
+}
+
+
+function keyup(event) {
+    if (event.keyCode == 87) { // key W
+        EjectDown = false;
+    }
+}
+
+function eject() {
+    if (EjectDown) {
+        window.onkeydown({keyCode: 87}); // key W
+        window.onkeyup({keyCode: 87});
+        setTimeout(eject, speed);
+    }
+}
+
+function split() {
+    $("body").trigger($.Event("keydown", { keyCode: 32})); //key space
+    $("body").trigger($.Event("keyup", { keyCode: 32})); //jquery is required for split to work
+}
+//© 2017. D4VOL

@@ -1,0 +1,1676 @@
+// ==UserScript==
+// @name            WME Bookmarks
+// @description     Bookmark, share your favourite places
+// @namespace       https://greasyfork.org/fr/scripts/4515-wme-bookmarks
+// @version         0.78
+// @icon            data:image/png;base64,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
+// @include         https://www.waze.com/editor*
+// @include         https://www.waze.com/*/editor*
+// @include         https://beta.waze.com*
+// @exclude         https://www.waze.com/user/*editor/*
+// @exclude         https://www.waze.com/*/user/*editor/*
+// @connect         4bphotoabbatienne.fr
+// @grant           GM_xmlhttpRequest
+// @author          Sebiseba
+// @copyright       Sebiseba 2014-2017
+// ==/UserScript==
+/* jshint -W097 */
+'use strict';
+
+// Thanks
+// All beta testers
+// Bellhouse for German translation
+
+// **********************************
+// **  DOWNLOAD HELPER BY DUMMYD2  **
+// **********************************
+
+/******** AUTO INJECTED PART ***************/
+
+function BKMdownloadHelperInjected() {
+    window.BKMDownloadHelper = {
+        jobs: [], _waitForData: function (id)
+        {
+            if (this.jobs.length <= id) {
+                this.jobs[id].callback({
+                    url: null,
+                    data: null,
+                    callback: this.jobs[id].callback,
+                    status: 'error',
+                    error: 'Request not found'
+                });
+            }
+            else
+            {
+                if (this.jobs[id].status == 'success' || this.jobs[id].status == 'error')
+                    this.jobs[id].callback(this.jobs[id]);
+                else
+                {
+                    if (this.jobs[id].status == 'downloading' && this.jobs[id].progressCallback) {
+                        this.jobs[id].progressCallback(this.jobs[id]);
+                    }
+                    var _this = this;
+                    window.setTimeout(function () {
+                        _this._waitForData(id);
+                    }, 500);
+                }
+            }
+        },
+        add: function (params, callback, progressCallback)
+        {
+            this.jobs.push({
+                params: params,
+                data: null,
+                callback: callback,
+                progressCallback: progressCallback,
+                status: 'added',
+                progression: 0,
+                error: ''
+            });
+            var id = this.jobs.length - 1;
+            var _this = this;
+            window.setTimeout(function () { _this._waitForData(id); }, 500);
+        }
+    };
+}
+var BKMdownloadHelperInjectedScript = document.createElement('script');
+BKMdownloadHelperInjectedScript.textContent = '' + BKMdownloadHelperInjected.toString() + ' \n' + 'BKMdownloadHelperInjected();';
+BKMdownloadHelperInjectedScript.setAttribute('type', 'application/javascript');
+document.body.appendChild(BKMdownloadHelperInjectedScript);
+if (typeof unsafeWindow === "undefined") {
+    unsafeWindow = function() {
+        var dummyElem = document.createElement("p");
+        dummyElem.setAttribute("onclick", "return window;");
+        return dummyElem.onclick();
+    }();
+}
+/******** SANDBOX PART ***************/
+
+function lookFordownloadHelperJob() {
+    for (var i = 0; i < unsafeWindow.BKMDownloadHelper.jobs.length; i++) {
+        if (unsafeWindow.BKMDownloadHelper.jobs[i].status == 'added') {
+            unsafeWindow.BKMDownloadHelper.jobs[i].status = cloneInto('downloading', unsafeWindow.BKMDownloadHelper.jobs[i]);
+            var f = function () {
+                var job = i;
+                GM_xmlhttpRequest({
+                    method: unsafeWindow.BKMDownloadHelper.jobs[job].params.method,
+                    headers: unsafeWindow.BKMDownloadHelper.jobs[job].params.headers,
+                    data: unsafeWindow.BKMDownloadHelper.jobs[job].params.data,
+                    synchronous: false,
+                    timeout: 3000,
+                    url: unsafeWindow.BKMDownloadHelper.jobs[job].params.url,
+                    //job: i,
+                    onerror: function (r) { unsafeWindow.BKMDownloadHelper.jobs[job].status = cloneInto('error', unsafeWindow.BKMDownloadHelper.jobs[job]); },
+                    ontimeout: function (r) { unsafeWindow.BKMDownloadHelper.jobs[job].status = cloneInto('error', unsafeWindow.BKMDownloadHelper.jobs[job]); },
+                    onload: function (r) {
+                        unsafeWindow.BKMDownloadHelper.jobs[job].status = cloneInto('success', unsafeWindow.BKMDownloadHelper.jobs[job]);
+                        unsafeWindow.BKMDownloadHelper.jobs[job].data = cloneInto(r.responseText, unsafeWindow.BKMDownloadHelper.jobs[job]);
+                    },
+                    onprogress: function (r) { unsafeWindow.BKMDownloadHelper.jobs[job].progression = cloneInto(r.total == 0 ? 0 : (r.loaded / r.total), unsafeWindow.BKMDownloadHelper.jobs[job]); }
+                });
+            }();
+        }
+    }
+    window.setTimeout(lookFordownloadHelperJob, 2000);
+}
+window.setTimeout(lookFordownloadHelperJob);
+
+/******** NOW BOOKMARKS ***********/
+
+function runBKM() {
+    var BKMversion = '0.77', timer, link={}, countries=[], countriesS=[], count = 0, debug = ''; // Script variables
+    var lang, text1, text2, text3, tset; // Language variables
+    var BKMusername, BKMcountryActive, BKMhandle, BKMhandleClass, BKMhandleClass2, BKMmapSearch; // DOM variables
+    var BKMsettingsLayers, BKMsettingsPasteLayers, BKMsettingsServer, BKMsettingsSort, BKMsettingsSynchro, BKMsettingsZoom, BKMsettingsBck, BKMsettingsClic; // settings variables
+
+    // *************
+    // **  ICONS  **
+    // *************
+
+    // icons from ©iconza (https://www.iconfinder.com/iconsets/iconza)
+    // icons from ©Sketchdock (https://www.iconfinder.com/iconsets/sketchdock-ecommerce-icons)
+    var di = 'data:image/png;base64,';
+    var iconAddLinkMap = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAO4SURBVHjarJVbTBx1FMZ/MzvsbheXQEthy02DNPVlpUpKmgj2sgaykkrbUGolJqaYlIcaE9OGtighGtN6SV80xhgftGkffFAiTcEaaIwmNlqKdgtJoaQsl3Ip2AuwLOzuzPFhBhVlKS3+k8n/zMw53/edL/M/AytdL4qbCsmhVDQAdsmC1+qKCXTeeOxx+nFxHAQalf+XQBGMrFTwP8shdvE+CJTLCgnmbSiTFJwUBnphPASb8jlMBYfZZ+X55SHA59U9LxuUffJj5ZciaSdE8Il4G0SeqhOhSD5ARAFQHqqDUim0pdBYU0XGuSEIDgDjwCXI88E6FX46z0kCHFqcYIfA2TjcZbLRlcHPr5SzqikIQ0EgDNwCgkB/BG+lnelh6LtObfwOyuQoIXSEERRGmKEDF3s9G/nEvxWagzA2CkxZ4KOAgJYCsZ5JVq99hNvXh5awqELk1d0wK0SvdBMZHSOUlc7qZ7agne6Au7eBSWDMuuZAyQIJTII7qZjA+SBrnpT4BH7xr0rlbEUltow1kJ0Ed8LwXhtM37PA55VPAZnAkAFOtZxflCZKBL5X4nTwgkCTAltlr93DmWI/togDIhG4FYK+a8BNS/kUkAPKoCEyrR5nM29yE+GCCX3/r8gvfpuT5i07YTxmdjE8CMZF4B6QCspEBJnUfqDPtu3f5UscNJ+5tSgteg8nLn4LbmAuDOockA44wRYBuSu/02fbRu5/LV+CoA0Ah+Oruny6j+SGmWz/hqhHB6cKig2e2Ax630QXHsd2AG4oskwCU72mnTpWW1v59kefbcA1MZyktl8OXT1j8KgdEgwgCnhSe3EQjjcW1EVtoQ1V/Xx/Tc3L7+6pRG1uBs1hR/7omsGp7u9qnIrlrYUEQLFRwA3ctDzAUNC0U8cOHhS51CFSVy/yXOmM5OUFAvBSJgDr5qpI79Xzq0WcPpkiecSzDNgcACUh4XRdfb3oVztNcF/JtKxf3zkCmzIXpHulnOSAOAtmBXt79n3AC6z948IDB0Q6O0WOHDWVm+AkL7CwyPK7QHbg7u0mbSJtWdZ4vb3XBgdFGt4xwXNzrwT+Vu5bmFy07Fn/unnilE9PtraKtLaJUVI6I9nZv/aAL2tR8Adfe56urpbpgQGRqiqZhQ8b/vlXXAmyBijp6a/tNgwSi4svf9ff/9YX0PIbeLwQ04EYYIAWg1jUHMp6BMJzZkwMdN2KDYiKFf+lTnG5vk5KTExxj49vv2MeH08c1TGrUBcIG9ZDMe/n4+iCij8HAJTXkX9j47cVAAAAAElFTkSuQmCC';
+    var iconBookmarks = di + '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';
+    var iconNoBookmarks = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goJCQQUoj+qIgAAA/ZJREFUSMetlE1sG0UYht+Z3Z3dteP4h6SNY6ex8wfJpUKiatRUKVFAtELNhSs5JKgSEqUHJJBAoAqJK+JYcSVwQ4pEegbJuFQqcYmEE0tpErt2bOP/v3i9jnc9HEqiVE1CouaT5jCj+eb5vnfmHeAUwTmXCvmCk3MunDSHngaQzeXulKvVYC5fmDhTQKVSBQDk84U5mbGxbDb7zpkC7PZOaFrjEqW07/z5c7BarTdK5bL9TCWKJ+KXnA6HTRRFCILw+tZWTK5UKmcD4JwzSuhkZ6eNAACTRPR5e2ftdvvLAzRNQyKxbWcym2KMAQA6OjqgaY0PAaBcLr8cwGKxgFI6QCk9R+mz7arFgp16fYhz3u9wOM5Eoq9URQUh5FkSIbBarUgmU5/9Xy5ZXYv0GYYR55zvH/BCFZRieGgIssz21+qahvX1JxCEwz3XbrchimKT/B1edQqU/sZkdtHT6waTFfB2+8VKCAHn/Mj5wWLq9TrS6X/QMoxFwjnHRnRDIm36fSaTmRt5dQT2zk6YponThiRJSKVSSCS20dPTc8vtdi8QAIhGY8Tv9/FCsfh2OLz6k9fj6e7u7jqyysO6M00T8XgCxWLx6bVrk+8RQkLRaAz7oldrNXTabMjl8oORSOQugNmBwQGoinIsRBAEFIpFJJNJMMa+G798+QtCiF4sFuFyuUCO+jWXl0NvFQqFn719XovDbj8SkkqlUa3VikNDgzd9/f0PCSG81WpBkiQAgHhYUrPZbKmq8lBi7KkoCKONRuMYeQCLqm75fb4/qrXa/l3sxaEARVEQDAYvNDRtVNf1556voijQdf3AXMbG5uYbnPMOQsjOiY2mKMrHAKDrOjRNg67rkGUZ6XQaoihC0zRomoZmcxeiICIUevz1qZy8thb5gDGGRqMB0zRBKMWjR38a4fDqxtpahDPGYBgGdnZ24HQ5sRwKvXtiQDaXvVmpVIggUFgsKkrlMsLhcN7j6b1z+/ZHw4xJ3zx+vLLfFQFB2zR7o7HY+LGAUqkEALi/dP9Tl8sJq9WKUOgvlEvljampqfHp6el7ADAzM3N3bGx0JB5PmNFoDFarBTZbh23pl6UrhwL2LtHpdIJz3pVIbL/m8XoRfPCg7R/w/zg7+/6w3+fbPGAsPjFx5cn8/BzTNO3XlZUV7na7oSjym5xz5aAB6X/vHoQQAYC6uLg43Wq1ugOBgE4Jvrxx/frnqqr2CoLQLQiCfW+IovgKIaRrYeGHW83d3Xu/B4NoNPTx+fn5fkqpAoBwzp+TqA2gmUwmlzKZzIU2bw9sbm59CyBnGEYeQBlA/cCoSpJUDgQCycmrVz8xDKMvl8tdXF9fjwLYBcAB4F+Gkb6o+TjnqgAAAABJRU5ErkJggg==';
+    var iconShare = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAALpSURBVHjatFZNSFRRFP7emxnvzGiPEUf784fKzIqCCDIlCje2iUCwNiER1SIigshdaLoJaldECyGohDZGJYFltFEIx5AiWpSW4A+mY86M8//evJ/ufb6ZZnRmHJM5cLhz7nv3O/ec75zzhtM0DfkUHnmWvDswJxtVl11suU21YwOYnQxjsrtutYM4+KGaMpQ67OtGXvCF8XnM3ZGEBS6ZZBqBFgd3+5WMQOxMNBqFoijgeR5WK6GrSX825Q7C4/GCRsCli8AAlzG/JGd0EAyGYOOjuHt+J+prBUzMi7jT58P4nARCyNoks6DYLdMpu7UoimhpKEXjAQesFh77ym24cEJIvJOR5GyiqhoikTBCoTBKBELBi1Oe2wm/dhUl59jvD0CWZT2/TBiwYDfh+ukqnDtegnmfjJ9zIqq3EHiCCnqGlpCuadM6YCmwQMLN5u3YX2HHK5cHxOrAlaYy0EDQ/cGLvtEACgmH2m0E054Yfnvl3CNQVRW3zlTi7LFS3T66R9BJfzrow8tPfoix5ZvSIDA8Hs690eJiMplwcEdhyt7rEQ96Br36sw2PCovFjHdfgv/KMqqiua4YnS1ObN0k0wgVyk+Mkh6BJEmMtRWaA8lP6G3dAQW7NhO8/xqguddw9aQTz2/sRt/IIh72z6LEYUZDbREmF1W4fonrqSJAoWy+GV1K2b/2eAb1NYW42FiM3ra9cBSZKdHLKevqncMLly/3abrcbKv1448QWu9P4NtUOAHO5NRhIfFODg60rFpQYMHQ92DKibFZMTsHHMeh8tKwPhE1jcNaX7q3tAgqnH9wpNqOCbeERwML+hnWnJk4oKhqFx237TabDWZz9ikSpb3woN+dssfAWWUxHHphNqm1xLimNktXQXnrQBdPhLb//dqoov/ezLOmdvpTotjqSgfs2jY2u6gSwzYZyutRphKlUlUMZblhRLDWjjB7pQMYAHySckkrl6UaVGNV4rZmAHP5/tvyV4ABABHEe0sJhQEUAAAAAElFTkSuQmCC';
+    var iconNoShare = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKWSURBVHjatFbdThpREJ6FpQsuFhRaMQoxRBIbk8YbvTG98NKkL+EDeNlbab3tpQ/gS/QNeAFjook/CRFEQP5/dlnYXU7PTBe6IOC2hpNMYM7Z/b6Zb2YOCIwxmOdywZzX3AlEu3N+nsKP79ySb8D8gRhHR19eEgzAt7ejEAr5/xm5UmnD1VU2acN6QTAEV1VtKlC/z6DV0kDXTXC7XbC46AVRdIHPJ0I0ugTZbC05jYDAFUUjmxWponRhfz8Bq6tBIstkKrQny15nRcb2nWSGYUK73YXNzRVYX1+mDILBBVhbWxo+M7XI4+DjstTrKpksS1yK5ZFzt1uASTMlTtP4+bkF3a7B9ZVor1pVQZJE2N2NQzz+ATRN55lo4Pd7odczuO5Ves8Rgar2yHZ2YlSTdLrE5QjB1lYEMMiHhwoUCg2rwBJ0OjoRvjoHg2UYfdjbi0MisUJ+JBLg2ei8kFXI52vDSE3T5AXXnQ/aYHk8bgiHR+cgnS7zyMt09uarArVGCf5mZMLGRphnFKHeRx8zajQ6JOV4pznqolyuyiXo8yJKUCw2aS8e/wgHB58om8vLLAWC8iEpFtyxRH86CeDpqT6yd3GRoaLHYiE4PPxMBAPJrq9z8PhYcyYRZomFnGSlUgtSqVuaZns9cKIHzzggYDPN6/VAqdwceafZ1CbWYEggCMLwnnmNhJ9CmWdyf1+EWk2hIbu7K9DZ+DzYayAw1j/l1+1JIOAjfWct02Rwc5Mf2cPJx85CHB4wx2NMGKTEfczm3dnZr1NZfv/tf39tFKX58/j46wn/2uPY/XECDNvHbQHHwfLdluG5YC8VNhsmY5mBSeBNw62D/jgBWAAumwm2T2FSP9iImEVEPrOAhXn/bfktwAC4/bsJgXSBjQAAAABJRU5ErkJggg==';
+    var iconHisto = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goJDAkkN4MmKAAABFZJREFUSMftlVtsFGUUx/8zO7vT2e6tFAot0G4LhRatBEQkCAUSMfAgCAQTEmMiGhpJ1PBiNGIIiSa+qC9ErfGBqCRGHyQxkcQs2psBWRJiK6VtKAW3dWt3drez3Zn5vpnv4kORSxSIl0dO8j2d75zfOSc55w/ct/9idZ399/wT/PDSXf3KPTM8M9LUWpHfOB/ufF3hYSEgJmVFftSv/MX5bHX3vcKVv6vIf7EVALD64NnOJp3tbkkm4ssXVQUTRghQgBlCxUhm2hm4UryaMiOHrM9XpeZ1DiDX0fZXwI5X+gKc88X9LGZmPlpVBoDaAxcaH4p46famSPVjbQ1QAgFYhMNhApRJBFQFcT0AQ/roHriG1K/sjTNF410cX0FrO39GtmPlDYAmfLZoYU14TLHcrsxz43taxdjCB+Okd8ej9fFEVQJ5KuALHwDgcwkqJByf44rlAQCamxuwsMp8O5ieWtO7Ue7Ndij81g40MA9BYx72rIhtZqdHzumGTvZtWhJ3FR3TlEGVABUSlEtQKUGYgMcAIgDiCfTNECQTCRzYpO1i/Mc3z9TLo/KEIm8AJKWYMG0sbV6A/U8sXZKzXLhKEJRxSCnh/pnYE6C+nH2QIETMgn2J3pyLNXUhtCfDR8oXT3/ZDwxqmgbGGFTquNCFj6vZMoKVUbQmazFDfJSph4LroVimKFgERZvCnCEolAmsEp31lwjMaQcuoUgNlzB3XgzVuvIFAGz3Z8eqea4D7lGEAwJZy8W4lLApB+WzVRIpQDwBwgT0QACUCdCyDSiAETIAVWLKdGF5HF26gXV1Wlt6z/fPfqMonwKA5hMX3KPwiIeCLeH5AoQKeELAvQ5yKUelKjExlkHJnCpIBMqScalogapodXW0cX6NMsol+gZMtD9egxU/nX31HHAd4LtgroeyTaAKBsIEXJ/PztzjsAlHwlBxbWRM5hz/aH9y6wl8UH8ZACpfGHhk8cTFrXMLw4cXJWIGCceQGiph/fKa5Hl+sl2knurRmHTAHIKS5YBR7bbkhAuENBV03MRkzjx2sevgUSg3d9P+pC09BKRXbjtxLJ+zhhvD9gIrWItoMl7ZQLvWjgE9KhcUzPNglVwUimUU8mUUCzaKlo18bgbSp6ibE4KmqM3Kzp5qAKh467vbtrWkqjMZHm3K5q0rkbKJ3yyGhtjiTdh93tCYJPB9F7nfpxHUFDAmQDkH9SUIY7g6ZaKipQ57NyzZRrvTXw0fkU+Tw4p5K2Ds230SgDu6/esng5NDZ+OhQDQa1tdGpy5EVS5dEEJQlwhhQSSE2oSO+qowGucYWDY3graaOMxpBxlPx0s7125pTr1+6k6HzT61a/BS9cMvW+ODMHy3JuKNhDSuGn6OjppTQ4P2zQsoAUW9LXgiI3BKSkVTY+6dAOF3foDz2pbjlzd/3NFSzK4LIFvxr3Ri/fNddz3ziW0nGx7YcOj9Zev3z/nfRUp7L31fqf+Z/QFgv2hBV+ff4AAAAABJRU5ErkJggg==';
+    var iconNoHisto = di + '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';
+    var iconBackup = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAM6SURBVHjatFW9UxNBFH97d8nl4iUcBwTMjEDjjI2tH52VtaWlhZY2lloAzmjpjGOphaWlfwFjJzZ2lhaiE0kIISSBfHC5c39vby+XEEAKdubNXva9/b2v39uIKIroMpdxnsHKk2/rUqJTdBH0Z90XOoO7a9tjikrlLy6uZbNZKhaLVK/XqVy+Kr5uLLOt1EeLiyXa32/SYDDAlQ2pH3MG2xMZABiXJfBaqVSiQqFAQXAsd5dBY5tobs6nMAzJ8zxaWlok2OM8DuxkBnGqHLHvz9JwOJyQkAH7/T6DCiHIMES8G8m+t9dIMvr1/vY6O0AtNTB+a9AgGEpQBY5zCC573gxik6DEwEIY7Ew7gmhHlk5ldtZLItUOAI6ow1ABh/0O9doNEsc+RRk3doQFG0Eohs4Kwe7sVMdKFKWdKGBVEg08uXIFnwzbTUqWLtvubp1kiUSSARiCJuXzeQbu9XqnAuvFOimwgyMEiEwajX3GG2tymttBt0WDw+aFhyp7xSPLKXLkU+fgohlMliqXy3Gjj46OkpmxUvxP9UCQ4zgU2jZfPK8HNuwMg8U0DS6VmpllkdAUU4nI/4dFTtEnkXUxXAk9DcOU4FqUs2q1NsoAIw9qKWPFhiAAI4ZMQ0QZAdBWwJo1Cswkyxo5wDkanTx2aIqMcAO8hSPLslgyGSv+NpMh4sbFU4vzcTuL7wMHeJM0xVPB7xAMEKXit57OIbXbXbbFbOBtUhFbvDebyaOXUPTU5/r+rVXyXJtqtZoEbcvIMnLv0Pz8HOtvXi/zb3XeZjtko/XplWSw9XKF9+XHW7yXfJcCqe52u/xUoz9oOBaIgd84d5wcf/ODEetBz2kZIC0TH5vf/0gQxSaUamammDBLOVA6nEOvda1WW/fIFHHDJh1ktj/cWegfVN7++FmlTucwpu1IVKTR2BnsDg5ahHu4D5wYbzTJAt1UJXOk5KXY5Yefn1nu0lM0ETTFwpTeWF2g7dohN5uf9c7Ou8qnB2/Qf5hIARsCiR2mHegsjJTw72uPvrwQVu45qIk66z0Keq9/f7z3igdFVk7KMN7DKAae9tid9ezwvx7+reLvqUvy/+Rf5mWtfwIMAKOeQJT4XFj9AAAAAElFTkSuQmCC';
+    var iconNoBackup = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJWSURBVHja7JW9T9tQEMDPzncgVBAZ0oCcVhQlCxJiYUDp2D+hO0wsXSqxtIPboV2QKlVd2Nj5EzpSITEjoarqgBRVNCgKddI4xl/PvXvNi+yQOGmrbD3p9Gy/e/d7d+/uWfJ9H6YpMkxZpg6ID344OvoUZf8KVUN93XseKjs71T+OgJz5MzMpbWvrEeRyGYL4UZBJAdxxNpvUtrfLsL6ugmnaoKoLUKncB/o+DiRHOc5kklq1WoHNzYfQ6ZjQbhsIsMC2XfA8BsvL87C2tgRkNwoUH+Lcj8VkoB1TCbfbXbAsF9UZGWahcI+PtVpTQzDBpCgArKwswMnJZ8Ccw8bGA0inPWi1DHAcF9W7Y99sGmAYFihKDhqNn2MjgFJJgWJxHq6ufsDp6RcOWl1dAkmSMDU+uC4DxhhCzb7jUinP104EIKGdKspcH3R+XuOgxcU50HUDzyTseOI+CEq3e4uVkg6BLi8b/FlV8//WyXTAjPm8eggkIiIhgBCyCerEERCASpHEw3OlQ04kYqEU/tVVEdyZ64adiHcaB+fGpogqhFQIVYvjsDsaNSfmR0UgCeDZ2Vfs0MLIXVKJDpu7uTHEZimXDNPsywOAxO7uY+X6+vv7i4tv2ECdfjqCaRHpE0p29XoLaB2tJz+imyXxR0Oq3Isog5pFTR0cHD/P5wvP4vEYzM6muJ2ud6FcLqIznffCb0D9w/7+03c4bVF1o5p0VOibBQHBNAnl74eHH18mk+kXdEdRZYnRtm/f7u09eUNB9S47rzfy9IQimNYPR/r/0x8nvwQYAHt+Zlz7MOT0AAAAAElFTkSuQmCC';
+    var iconSettings = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAASySURBVHjatJXLi2XVFcZ/+zzuua+6t6rrpd1Gu7Uhg0QQTJQ8ps6FEPoPyCg4iMNgICAZiwgJiPgHhCSTkIzEgSghOlBotYWYapXuarr61uvce+45++znyuDcsqvjuDds1t7r23xrrf36lIjwMFvCQ24PPYD6+e9DMpb48vZIfjvthdH5DRNA/Z99oJ0B3AcVsHBJfavJXy0T9adMovrN07u8dvFqThzkZAko1XWRrkdWNoIoiKEjlJU/CMSVdQG2LcONW+GP7x8n8+yJvn1l56mCfA2GGQyLbmGIoGJHfjZPEnAOYtbNZeWPgERoXTdfpLB+KeH7lf1DMsntmk27jMZjWDSCBMgyiElHLrEr/+gkkKgVabyfuXUwXwT6OfTSLolSKaaZu5g4ITjpnLNb8I9/nrD3ac3+TTi4BwsDcw21hfc+rEkkUtYwb1Zdw+E88snnS/p9KFswDpoALkafxShYgcMvNb/8aZ/nrq1RZAm9HD74uOHLMmN8oQcKvIKlhXnbVXSW/clcWNaBwxO4eyJIqihSiCaQSRSMQHWnZNrsMsh76CUMehBnS46yIXHUQyIYG9EtlHUXwJnImvV8L/NM1hvW6yk7reU/Vcpks0dmDFkMgdZAnY/4yzszKl2xMSgQSdirwD+5QVmtDtEEag1lBSqB4zsN165ofvXiNvPlEG+g1T1+8fo35JOnGHlHFqxH1xB3J1xvM67vG56/OuBUBsRhQUFOU3YX3BhH08i3AeY68PXNiusfTKhqhwTFUmvmy5aphsI4Mm8dUcOihfFgSL42pZgWqDDAaKirbq8lgdYJTZtw2nS3LmRr/H2/5K+ff0FhSy5dvMQXsxqz8SibjTBxgSw4jzUwr8AaqGuH1imnDdRtd8dN61mcLCjvzti/0Ofmbcfa+hjShDB9hHqwybY5xF+5zIwaiZ668Yh1ZME6mgZOK6HpKWrtaJuC0ypQtYHGeH6Qz3jz1ztoe5lxr6C1PV5++xtutNtQpATrWBeDrg2uqUGEaHsEZ8mCc9RaOKoa8jRl3mi0HnJvoVkaT123/LB/yPMblykXoFvYHEGhS7wZg+qBtaAC4hzYFhSo4AjOkQXjqbXjeNmgsgxnHNYKpW5pjQMRrs88L73xGeIadkZjDmrDV8ceJhGcBe8gceA9BNsdkHNdBeIs1lq8MRACuJYkBpRzEBwIHBZbvHVjCdUxP3t6i3/t1TDZAvHgBLwjSS1p8N3LUwLBEr0lC951ZM4AAZRwXLdEt1p89gevTyhyT+iPYOI7EmtWL86jBebLpqtAugrEG5UF06Y7YkkkElsNxZCP9hcd69kvt5JVkw74cO+gk6kzcZDuWz2wGQe3Z6A6eDcarJeY3GH4743lET/a6jNKhDwGcgU5kVzFlZXOSiBP6fAzDFnhgTwRRgn8eGvIej3j1uji39R04yfPPv7M7/785OajV5N+juec0gAKQUQ6RVv5hPP4/QoBMiLeeL46uvvf2zdeu6b6JFfSjed2h6OrL2T1vdF9XRQeHMm323VeOhXnZHOFu7XHSq333pXjj05Uj+yCpGNJ0vGucjp7QGcfkF9ZZct3A5wbiID0Rlbi8p7yVfq/AQB2JwwGH05xBAAAAABJRU5ErkJggg==';
+    var iconNoSettings = di + 'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAQoSURBVHjatJVNbxxFEIaf7umd3fVudteJvY5NTCB/gCg5khMSvwcOHBA3xJkb/AcicSDADQgXBOScXKI4WiJw4i95P7w709/NYbyT2FYQl7TUUqurpt63umreEikl3uSSvOH1xgHU9z/8KEMIH+eNxqcyyzr/6b18TfH6+5QgRr+IIX2eNbKvFfBRp9P58u3tbdrtFkKIi3FP63S+XufvU0rEGDHGrDx/vveV83YqU0qfbV97i05nBSkljUYDpRRSygtbKYUQoibxKhkhBCklUkrkec7GxhDvwxdSCHEpz3NijDSbTYwxxBjrYK+yOzk5qc/LDRBjZLFYkGUZQghCCOR5AwFbEghCCGKMHBwc8ODBA3Z2dnjx4gWz2YwYI845Uko8fvyYGCPee0IIeO/x3qO15unTp2RZVttSSsSUvIoxAjAajbi2vc17N2+SyQzVUDz76xmXLnUZDAZ472t23vuafQiBxWKBtZaiKM5k4qxDpVSlvL+/z2D1CpnKsLZASsnh4RFSQLfbJYRQB9daA+C9Zz6fE0IAYDweM5/PSSkxWF3FWouKsUqz3W7z6OFDFuWCPG+SCYn3jq3NDcqyJKWEtRZjDFprpJTs7++hVM6t27fRWuO9Z7Bq+eXnn7h96xbOWZRzDq01m5ubDAYFO092GK5dodnMyTKFkJLFYoEQogYoyxIpJVobprMj8lYbrTUxJqyt7NY5rHMoY6qPrLV0Ol16/T79fp9Go4G1lrIs69ZcFnXZaXmeY3TJn7//xnw+Z2tri+l0ynA4pCiK6omcs3Ug5xxFUaC1xhiDMaZmPplM2N3dpdvtMh6P6fV6KKUYDocMBgOm0yk3btzg8PCQEEKVhTEoZx3WGoqiQClVB1+2Z9UdJXfuvI82hkajQYyRX+/fp9Vq1ZkaU8UoioIYI+12G+/9yxqcB7DW4r2nKApmsxl5s01IYLSh2WoxmUwZ9FNNxHuPcw5jzGmH1TUwaF2hZ1lWB9daY60lhsDJyZx7977DGEOn06EsS4qyoN/v4ZyrAZYgKaXq3jqk965GXu4QAtZanHOElBgM+swmY3b/+RspYDadMOj3az9jTA3y8hzw3qKsrd7ZWotSCqAG8t7XYtbr90lAu92m1+sBYK0lpYT3vtaj5V9ujcVYK5Q2Jls6lGXJysoKR0dHZ9RxKXB5nrO7u3tGrpd2IQR7e3u1zVWaFGWr2fzjeDyh2+3WvX5eMWOMpBhZ6hZcVNOlTQhBv9/n+PiY9bX1b7PRaPTo6tXND0hcrkRKvqLz4vQnkwgpT88gRIaUlU3KjCyr5kWWZYBgsSg5PDx4cvfuN58I4N3r19/ZWF9f/3A8HncuzsFqDL5kfn5WijO+AGtra5Ojo6OfR6PRsQAuN5vNlDebG0Yb9fpB/P9Xq9Wy1tp9rXX27wBOE0kcmOQyhQAAAABJRU5ErkJggg==';
+    var iconComment = di + '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';
+    var iconNoComment = di + 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8igiAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIeEeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCEAcB0kThLCIAUAEB6jkKmAEBGAYCdmCZTAKAEAGDLY2LjAFAtAGAnf+bTAICd+Jl7AQBblCEVAaCRACATZYhEAGg7AKzPVopFAFgwABRmS8Q5ANgtADBJV2ZIALC3AMDOEAuyAAgMADBRiIUpAAR7AGDIIyN4AISZABRG8lc88SuuEOcqAAB4mbI8uSQ5RYFbCC1xB1dXLh4ozkkXKxQ2YQJhmkAuwnmZGTKBNA/g88wAAKCRFRHgg/P9eM4Ors7ONo62Dl8t6r8G/yJiYuP+5c+rcEAAAOF0ftH+LC+zGoA7BoBt/qIl7gRoXgugdfeLZrIPQLUAoOnaV/Nw+H48PEWhkLnZ2eXk5NhKxEJbYcpXff5nwl/AV/1s+X48/Pf14L7iJIEyXYFHBPjgwsz0TKUcz5IJhGLc5o9H/LcL//wd0yLESWK5WCoU41EScY5EmozzMqUiiUKSKcUl0v9k4t8s+wM+3zUAsGo+AXuRLahdYwP2SycQWHTA4vcAAPK7b8HUKAgDgGiD4c93/+8//UegJQCAZkmScQAAXkQkLlTKsz/HCAAARKCBKrBBG/TBGCzABhzBBdzBC/xgNoRCJMTCQhBCCmSAHHJgKayCQiiGzbAdKmAv1EAdNMBRaIaTcA4uwlW4Dj1wD/phCJ7BKLyBCQRByAgTYSHaiAFiilgjjggXmYX4IcFIBBKLJCDJiBRRIkuRNUgxUopUIFVIHfI9cgI5h1xGupE7yAAygvyGvEcxlIGyUT3UDLVDuag3GoRGogvQZHQxmo8WoJvQcrQaPYw2oefQq2gP2o8+Q8cwwOgYBzPEbDAuxsNCsTgsCZNjy7EirAyrxhqwVqwDu4n1Y8+xdwQSgUXACTYEd0IgYR5BSFhMWE7YSKggHCQ0EdoJNwkDhFHCJyKTqEu0JroR+cQYYjIxh1hILCPWEo8TLxB7iEPENyQSiUMyJ7mQAkmxpFTSEtJG0m5SI+ksqZs0SBojk8naZGuyBzmULCAryIXkneTD5DPkG+Qh8lsKnWJAcaT4U+IoUspqShnlEOU05QZlmDJBVaOaUt2ooVQRNY9aQq2htlKvUYeoEzR1mjnNgxZJS6WtopXTGmgXaPdpr+h0uhHdlR5Ol9BX0svpR+iX6AP0dwwNhhWDx4hnKBmbGAcYZxl3GK+YTKYZ04sZx1QwNzHrmOeZD5lvVVgqtip8FZHKCpVKlSaVGyovVKmqpqreqgtV81XLVI+pXlN9rkZVM1PjqQnUlqtVqp1Q61MbU2epO6iHqmeob1Q/pH5Z/YkGWcNMw09DpFGgsV/jvMYgC2MZs3gsIWsNq4Z1gTXEJrHN2Xx2KruY/R27iz2qqaE5QzNKM1ezUvOUZj8H45hx+Jx0TgnnKKeX836K3hTvKeIpG6Y0TLkxZVxrqpaXllirSKtRq0frvTau7aedpr1Fu1n7gQ5Bx0onXCdHZ4/OBZ3nU9lT3acKpxZNPTr1ri6qa6UbobtEd79up+6Ynr5egJ5Mb6feeb3n+hx9L/1U/W36p/VHDFgGswwkBtsMzhg8xTVxbzwdL8fb8VFDXcNAQ6VhlWGX4YSRudE8o9VGjUYPjGnGXOMk423GbcajJgYmISZLTepN7ppSTbmmKaY7TDtMx83MzaLN1pk1mz0x1zLnm+eb15vft2BaeFostqi2uGVJsuRaplnutrxuhVo5WaVYVVpds0atna0l1rutu6cRp7lOk06rntZnw7Dxtsm2qbcZsOXYBtuutm22fWFnYhdnt8Wuw+6TvZN9un2N/T0HDYfZDqsdWh1+c7RyFDpWOt6azpzuP33F9JbpL2dYzxDP2DPjthPLKcRpnVOb00dnF2e5c4PziIuJS4LLLpc+Lpsbxt3IveRKdPVxXeF60vWdm7Obwu2o26/uNu5p7ofcn8w0nymeWTNz0MPIQ+BR5dE/C5+VMGvfrH5PQ0+BZ7XnIy9jL5FXrdewt6V3qvdh7xc+9j5yn+M+4zw33jLeWV/MN8C3yLfLT8Nvnl+F30N/I/9k/3r/0QCngCUBZwOJgUGBWwL7+Hp8Ib+OPzrbZfay2e1BjKC5QRVBj4KtguXBrSFoyOyQrSH355jOkc5pDoVQfujW0Adh5mGLw34MJ4WHhVeGP45wiFga0TGXNXfR3ENz30T6RJZE3ptnMU85ry1KNSo+qi5qPNo3ujS6P8YuZlnM1VidWElsSxw5LiquNm5svt/87fOH4p3iC+N7F5gvyF1weaHOwvSFpxapLhIsOpZATIhOOJTwQRAqqBaMJfITdyWOCnnCHcJnIi/RNtGI2ENcKh5O8kgqTXqS7JG8NXkkxTOlLOW5hCepkLxMDUzdmzqeFpp2IG0yPTq9MYOSkZBxQqohTZO2Z+pn5mZ2y6xlhbL+xW6Lty8elQfJa7OQrAVZLQq2QqboVFoo1yoHsmdlV2a/zYnKOZarnivN7cyzytuQN5zvn//tEsIS4ZK2pYZLVy0dWOa9rGo5sjxxedsK4xUFK4ZWBqw8uIq2Km3VT6vtV5eufr0mek1rgV7ByoLBtQFr6wtVCuWFfevc1+1dT1gvWd+1YfqGnRs+FYmKrhTbF5cVf9go3HjlG4dvyr+Z3JS0qavEuWTPZtJm6ebeLZ5bDpaql+aXDm4N2dq0Dd9WtO319kXbL5fNKNu7g7ZDuaO/PLi8ZafJzs07P1SkVPRU+lQ27tLdtWHX+G7R7ht7vPY07NXbW7z3/T7JvttVAVVN1WbVZftJ+7P3P66Jqun4lvttXa1ObXHtxwPSA/0HIw6217nU1R3SPVRSj9Yr60cOxx++/p3vdy0NNg1VjZzG4iNwRHnk6fcJ3/ceDTradox7rOEH0x92HWcdL2pCmvKaRptTmvtbYlu6T8w+0dbq3nr8R9sfD5w0PFl5SvNUyWna6YLTk2fyz4ydlZ19fi753GDborZ752PO32oPb++6EHTh0kX/i+c7vDvOXPK4dPKy2+UTV7hXmq86X23qdOo8/pPTT8e7nLuarrlca7nuer21e2b36RueN87d9L158Rb/1tWeOT3dvfN6b/fF9/XfFt1+cif9zsu72Xcn7q28T7xf9EDtQdlD3YfVP1v+3Njv3H9qwHeg89HcR/cGhYPP/pH1jw9DBY+Zj8uGDYbrnjg+OTniP3L96fynQ89kzyaeF/6i/suuFxYvfvjV69fO0ZjRoZfyl5O/bXyl/erA6xmv28bCxh6+yXgzMV70VvvtwXfcdx3vo98PT+R8IH8o/2j5sfVT0Kf7kxmTk/8EA5jz/GMzLdsAAAAgY0hSTQAAeiUAAICDAAD5/wAAgOkAAHUwAADqYAAAOpgAABdvkl/FRgAAAcRJREFUeNqkkz1rk1EUx3/n5nlJbkNwiSjUyS6hIHXo1Emk4NDRySGDH8AP4OTiJ3DrYMDFyaV0EUcxnYSsoR9AVGgJIcnT5+Uch9zEpxLs0LvcC/f+f+flf66YGbdZjluuCGAw+IqqHXqfvO90WnfNKDY9FiGeThe/ZrP8pXPyZQ1QtYfeJ8e7uw+2vU9Q1WQzQJhM5tvj8Y/jLCt6zkkWAVSVtjqdVtf7hIuLKXleIbI55Th2pGnUXSzyBsgyAwAzKMuKLCturNvMkBAhun4BVaU3ilX/aeKqPlWjLP8PcE4Auw4QAVXDTFHVDVHXLmC2DLTqUQSwtdX+eXk5GyZJdKhqqFrdujVEBObzgqurcuh9e+GcWwJGo2+/9/YO+pNJ+UaE+0AR8hQRO2g2ubdsMN8bjeQsTeXtcPhZs2yBmBnet+n1HuNcRH208zxjZ+fR037/1cckcd3B4N3z8Xj0KY4jRqMzVCvqAgmjHQEJkIado6P+s5OT82J//8mL2heQugsuCO4A7SBsrB6enn44T9Pma9UqhnWJE6CSMBQSRFtAC4gDXP7a5zJAVLUAZsC8DqCWfhTOrgaQEHXlcQFUgP0ZANXBxxi7pWR0AAAAAElFTkSuQmCC';
+    var iconRelocate = di + 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3goPCgAbccGTMgAAAiBJREFUOMu9ks9Lk3Ecx1/f53nms2dzYGqgSHToVApSQuJljh2C6MdBIiSLaIq0Y/QHOA916tCpwGdsFw+CXoQ6dMk5I0JBOsS0tUj8UTvMGrPt2Zx7vh2atpURXvqePnz5vF/vzy/4ny8SiR892TRjPVPTS9KcmBs7MiQaXfBOTi1aH59MymfzKWmasdA/IbXOk1OL1sbzeTvd0CQTgXtyemZJhsP1EPE3Z4ehv+gtp53u0Ts0trZQKVhsXh4gORTk23p6fGTEF4pE4qi1zrOzUUwz1qO7jbl+j6Xrt24IT3sbiqqiNzfR+DqOYuXJdZ71Xbx02x4e9saVfUAg4CUaXfAaHter3nLaqV4bEI2tLQhAc+pohoFQFGwJsqbagxbC4dhJp8v53ufONyiD14WnvQ0BqE4dh9tNMbNNss9PcihI/ktmfHikPxSJxDmooFyuHO/qOqFns98FgKJpaFVxYWWFZJ+f1Ss368SBgPcXAEBWbHbOdLP28DG5rc9ohkExs03q6iDJoSBWvlQnBuoBqqrw7u3acqL51PKnR0/5upr8w3li4uWBGEDbD2xbApKOjmPnCoVddjo6Sd0fY6PXT25988Hd4IWQrhva6Kjf5uccZS1AlEo5I5HYAqBSsSmms2ROn+fD4ptwaDwwI4ToLpWsMlACckAWKIuabShVqrsKdlT/XUIIh5SyAuwBu0AeKAB7h12i+H3F+zM+LP4BGsLvw/41mgUAAAAASUVORK5CYII=';
+    var iconNoRelocate = di + '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';
+    var iconSynchro = di + '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';
+    var iconValid = di + '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';
+    var iconCancel = di + 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggcCi8VvAktSQAAAZhJREFUOMvFk89qE1EUh797z4xp0Qb/DBOLpCiCrotC49sUWxB8Al1NBNE3cCFx6a4v4cZYSougC6UgJdrSigkFUeNk5hwXncRJiOnSCwcu9/D97u+ccy/87+WmHS6tvxnmljutxs4sAT8N7rQaqFpixvZpDvw0eHH1dbNeqybnz1X+CRYu/5ZQhpdvxEll/ixvP3zhdzrYBKTEini38fnFnScjgTJ89XI1qcUX2e+lxNUQ8YaqkueKqgHGp/0eu89uuzEHV+62n966GT/w4TyHx4ORPdWcLMuKUFRzfvX77D1fcQDByJd3vN87JooE70501YxcQW0YhpqNDc+XSng4SNNH3W9dzOwk6T0iHhFBRAgCIQjCsWYGAJ1WYyjSrK+16XZ7SRRd4ujoK2maFk10FMbEObcxczT1tXbz+v1tu3Zvy04b4+Sr9L6yIAD11VePl9Y3hwJngLBw7MtNkBI8B8SWpzVwi9/fvfzovLT7B1sOiIEIuAAsFNwAUFcSCIvk3MRtAAYokAEp8AP4CWRuxgebzNm0/R+R3aag7ETr7wAAAABJRU5ErkJggg==';
+    var iconDelete = di + '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';
+    var iconServer = di + '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';
+    var iconHome = di + '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';
+    var iconInfo = di + 'iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3ggcCiUhZ1IxdgAAAaVJREFUOMvFkj1rVEEUhp9zP/bmakiCBoKaaCUopLILphbsBftgbWVjYX6H/0BBEAR/QkCRdHYqEd1CTDaim2zuZu6957W46364G1sHBg7DzDPPe2bgf42rD94aQPJnYXXrza08S3azVmz/OihBryh3BHeAYgjIs2R3Y/2SFVWMARhEZgiQawKy9627+f3gx0vg7hCQtWIryojPB33MIJyWLKbHLM3P8bM6TxF8CEizHEnLANEsTQMsjnn2aJ1Xj29yfSVt1gZTGhklfyVEcoShuuL2k0/UMpYXWiRjrXH32QAJvBZEcHmh5vnDawjYfnHI3n4Y7oui6GwDl4Mb3ZAyn8esXszI0sMJ7XGDaNJAyB3Jae8f0emWAPRDjeS417g3ddONKUBDl8TahYgbV84BsH1vheOiai6QcHfMZkUw0ECxsjm2nn5FLtLEaCU2FsOmexDKWt3eqSEhoNevef/lZJTVGkOAEPoAnQnAUae9+aH0nTgavJfZ7H8MVKF4d/Lx9f1xFxvABOSDOh3rkYAaqIAAhGRxjepXu7IzPuJk0BFkqv4NL9LKlyfSx2sAAAAASUVORK5CYII=';
+
+    // *********************
+    // ** HELPER FUNCTION **
+    // *********************
+
+    function getId(node) { return document.getElementById(node); }
+    function getElementsByClassName(classname, node) {
+        node || (node = document.getElementsByTagName('body') [0]);
+        for (var a = [], re = new RegExp('\\b' + classname + '\\b'), els = node.getElementsByTagName('*'), i = 0, j = els.length; i < j; i++) { re.test(els[i].className) && a.push(els[i]); }
+        return a;
+    }
+    function getLink(pl) {
+        var a=pl.split('?'), b=a[1].split('&');
+        link.MP="0", link.UR="0", link.MC="0";
+        for (var i = 0; b[i]; i++) {
+            var e = b[i].split('=');
+            switch(e[0]){
+                case 'env': link.env = e[1]; break;
+                case "lat": link.lat = e[1]; break;
+                case 'lon': link.lon = e[1]; break;
+                case 'zoom': link.zoom = e[1]; break;
+                case "layers": link.layers = e[1]; break; // old format
+                case "s": link.layers = e[1]; break; // new format
+                case 'mapProblem': link.MP = e[1]; break;
+                case 'mapUpdateRequest': link.UR = e[1]; break;
+                case 'mapComments': link.MC = e[1]; break;
+                case 'segments': link.segments = e[1]; break;
+                case 'nodes': link.nodes = e[1]; break;
+                case 'venues': link.venues = e[1]; break;
+                default: break;
+            }
+        }
+        //Object.keys(link).sort();
+    }
+    function getName() {
+        var name, topCity = W.model.segments.topCityID;
+        if (topCity == null) { name = lang[16]; }
+        else {
+            var name = W.model.cities.getObjectById(topCity);
+            if (name === undefined) { name = lang[16]; }
+            else { name = W.model.cities.getObjectById(topCity).attributes.name; }
+        }
+        return name;
+    }
+    function isJsonString(str) {
+        try { JSON.parse(str); }
+        catch (e) { return false; }
+        return true;
+    }
+    function loadSettings() {
+        var settings = JSON.parse(localStorage.WMEBookmarksSettings);
+        BKMsettingsSort = settings.sort;
+        BKMsettingsZoom = settings.zoom;
+        BKMsettingsLayers = settings.layers;
+        BKMsettingsPasteLayers = settings.layersPaste;
+        BKMsettingsServer = settings.server;
+        BKMsettingsSynchro = settings.synchro;
+        BKMsettingsBck = settings.backup;
+        BKMsettingsClic = settings.lclic;
+    }
+
+    // ****************
+    // ** MAIN HTML  **
+    // ****************
+
+    function BKMinit() {
+        // Waze object needed
+        if (typeof (W) === 'undefined') { setTimeout(BKMinit, 500); return; }
+        if (typeof (W.app) == 'undefined') { setTimeout(BKMinit, 500);  return; }
+        if (typeof (W.map) == 'undefined') { setTimeout(BKMinit, 500); return; }
+        if (typeof (I18n) == 'undefined') { setTimeout(BKMinit, 500); return; }
+        if (typeof (OL) === 'undefined') { setTimeout(BKMinit, 500); return; }
+        if (W.loginManager.user == null) { setTimeout(BKMinit, 500); return; }
+        BKMusername = W.loginManager.user.userName;
+        if(typeof(W.model.countries.top) === 'undefined' || W.model.countries.top === null) { setTimeout(BKMinit, 500); return; }
+        BKMcountryActive = W.model.countries.top.name;
+        if (typeof (BKMusername) == 'undefined') { setTimeout(BKMinit, 500); return; }
+
+        // Waze GUI needed
+        BKMhandle = getId('user-info');
+        if (typeof (BKMhandle) === 'undefined') {  if (debug) { console.info('WME Bookmarks - BKMhandle : NOK'); } setTimeout(BKMinit, 500); return; }
+        BKMhandleClass = getElementsByClassName('nav-tabs', BKMhandle) [0];
+        if (typeof (BKMhandleClass) === 'undefined') { if (debug) { console.info('WME Bookmarks - BKMhandleClass : NOK'); } return; }
+        BKMhandleClass2 = getElementsByClassName('tab-content', BKMhandle) [0];
+        if (typeof (BKMhandleClass2) === 'undefined') { if (debug) { console.info('WME Bookmarks - BKMhandleClass2 : NOK'); } setTimeout(BKMinit, 500); return; }
+        BKMmapSearch = getElementsByClassName('search-query', getId('search')) [0];
+        if (typeof (BKMmapSearch) === 'undefined') { if (debug) { console.info('WME Bookmarks - BKMmapSearch : NOK'); } setTimeout(BKMinit, 500); return; }
+
+        // Verify localStorages
+        if ('undefined' === typeof localStorage.WMEBookmarks || !isJsonString(localStorage.WMEBookmarks)) { localStorage.setItem('WMEBookmarks', '[]'); }
+        if ('undefined' === typeof localStorage.WMEBookmarksShared || !isJsonString(localStorage.WMEBookmarksShared)) { localStorage.setItem('WMEBookmarksShared', '[]'); }
+        if ('undefined' === typeof localStorage.WMEHistoric || !isJsonString(localStorage.WMEHistoric)) { localStorage.setItem('WMEHistoric', '[]'); }
+        if ('undefined' === typeof localStorage.WMEBookmarksSettings || !isJsonString(localStorage.WMEBookmarksSettings)) { localStorage.setItem('WMEBookmarksSettings', '{"version":'+null+',"zoom":true,"layers":true,"server":false,"synchro":true,"backup":"ins"}'); }
+        BMKcheckStorage();
+        loadSettings();
+
+        // Translation
+        var BKMLang = I18n.locale;
+        if (BKMLang == 'fr') {
+            lang = new Array('Favoris', 'Partage des amis', 'Partage ', 'Historique', 'Sauvegarde / Restauration', 'Synchroniser', 'Nom', 'Serveur', 'Valider', 'Annuler', 'Ajouter', 'Supprimer', 'Partager', 'Relocaliser', 'Commentaire', 'Changer', 'Sans Nom', 'Chercher une adresse, un lieu, ID ou permalien', 'C\'est parti !', 'Erreur', 'Réussi !', 'Stop', 'Paramètres', 'Pseudos');
+            text1 = ' Copiez ces données dans un fichier TXT pour les conserver.<br/>Collez vos données pour les restaurer.';
+            text2 = ' Écrivez les pseudos avec qui vous souhaitez partager le favoris. Le séparateur se mettra automatiquement.';
+            text3 = ' Lorsque vous êtes synchronisé avec le serveur, le script envoie des données à celui-ci.<br>Les données sont: Pseudo, coordonnées, pays, nom du favoris, commentaires et pseudo des partages.<br>Effacer les données serveur du script supprime toutes traces de votre profil.';
+            tset = new Array('Appliquer le zoom', 'Appliquer les calques (depuis les favoris)', 'Changement auto de serveur (usa/intl)', 'Synchroniser avec le serveur du script', 'Effacer les données locales', 'Effacer les données serveur du script', 'Tri : Favoris le plus récent en haut','Appliquer les calques (depuis la recherche)','Effacer l\'historique','Nouveau','Ajouter','Coloriser le dernier lien visité');
+        }
+        else if (BKMLang == 'de') {
+            lang = new Array('Favoriten', 'Mit Freunden geteilt', 'Teilen ', 'Verlauf', 'Sichern / Wiederherstellen', 'Synchronisieren', 'Name', 'Server', 'Abschicken', 'Abbrechen', 'Hinzufügen', 'Löschen', 'Teilen', 'Ort aktualisieren', 'Kommentar', 'Ändern', '(ohne Namen)', 'Adresse, Ort, ID oder Permalink suchen', 'Auf geht\'s!', 'Fehler', 'Erfolgreich!', 'Stop', 'Einstellungen', 'Usernamen');
+            text1 = ' Daten zur Sicherung in eine TXT-Datei sichern.<br/>Zur Wiederherstellung Daten hier einfügen.';
+            text2 = ' Usernamen des Users eintragen, mit dem du den Favoriten teilen willst. Trennzeichen werden automatisch eingefügt.';
+            text3 = ' Beim Synchronisieren mit dem Server werden folgende Daten übermittelt:<br>Username, Koordinaten, Land, Name des Favoriten, Kommentare und Usernamen, mit denen geteilt wurde.<br>Server-Daten löschen entfernt alle deiner Spuren auf dem Server.';
+            tset = new Array('Zoomstufe sichern', 'Ebenen sichern (da favoriten)', 'Server automatisch wechseln (US/ROW)', 'Mit Server synchronisieren', 'Lokale Daten löschen', 'Server-Daten löschen', 'Sortieren : Letzte Favoriten oben', 'Ebenen sichern (da suchleiste)','Verlauf löschen','Neue','Hinzufügen','Markiere den zuletzt besuchten Link');
+        }
+        else {
+            lang = new Array('Bookmarks', 'Friends\'s Sharing', 'Sharing ', 'Historic', 'Backup / Restore', 'Synchronization', 'Name', 'Server', 'Submit', 'Cancel', 'Add', 'Delete', 'Share', 'Relocate', 'Comment', 'Change', 'Unnamed', 'Search for an address, place, ID or permalink', 'Let\'s Go !', 'Error', 'Success !', 'Stop', 'Settings', 'Nicknames');
+            text1 = ' Copy data into a TXT file to preserve them.<br/>Paste your data to restore them.';
+            text2 = ' Write the nick you want to share the bookmark. The separator will be inserted automatically';
+            text3 = ' When you are synchronized with the server, the script sends data to it <br>Data is: Nickname, coordinates, country, name of bookmarks, comments and nicknames shares <br> Clear script data server deletes all traces of your profile.';
+            tset = new Array('Apply Zoom', 'Apply Layers (from bookmarks)', 'Auto change Server (usa/intl)', 'Synchro with script server', 'Clear local storage data', 'Clear script server data', 'Sort : Bookmark more recent on top', 'Apply Layers (from searchbar)','Clear historic','New','Add','Highlight last visited link');
+        }
+        // Then running
+
+        enhancedSearch();
+        BKMtableCountries();
+        BKMcss();
+        W.map.events.register('moveend', W.map, mapLoaded);
+        W.model.actionManager.events.register("afterclearactions", null, enhancedSearch);
+
+        function enhancedSearch(){
+            setTimeout(function () {
+                BKMmapSearch = getElementsByClassName('search-query', getId('search')) [0];
+                if (typeof (BKMmapSearch) === 'undefined') { if (debug) { console.info('WME Bookmarks - BKMmapSearch : NOK'); } setTimeout(enhancedSearch, 500); return; }
+                BKMmapSearch.placeholder = lang[17];
+                BKMmapSearch.removeEventListener('paste', BKMPastePerma, false);
+                BKMmapSearch.addEventListener('paste', BKMPastePerma, false);
+            }, 100);
+            //MajkiiTelini's hack about Search layers
+            for (var i = W.map.getLayersByName("Search").length - 2; i >= 0 ; i--) { W.map.getLayersByName("Search")[i].destroy(); }
+        }
+    }
+    function BKMtableCountries() {
+        if (localStorage.WMEBookmarks) {
+            var a = JSON.parse(localStorage.WMEBookmarks);
+            for (var p in a) {
+                if(!a.hasOwnProperty(p)) continue;
+                var pays = a[p].country;
+                if (pays && pays.length > 0) {
+                    if (countries.indexOf(pays) == - 1) { countries.push(pays); }
+                }
+            }
+            if (debug) { console.log('WME Bookmarks : Mains Countries listed', countries); }
+            select(countries, 'selectCountry');
+        }
+        if (localStorage.WMEBookmarksShared) {
+            var b = JSON.parse(localStorage.WMEBookmarksShared);
+            for (var p in b) {
+                if(!b.hasOwnProperty(p)) continue;
+                var pays = b[p].country;
+                if (pays && pays.length > 0) {
+                    if (countriesS.indexOf(pays) == - 1) { countriesS.push(pays); }
+                }
+            }
+            if (debug) { console.log('WME Bookmarks : Shared Countries listed', countriesS); }
+            select(countriesS, 'selectCountryS');
+        }
+    }
+    function BKMcss() {
+        var Scss = document.createElement('style');
+        Scss.type = 'text/css';
+        var css = '.BKMbutton2 {padding:2px;margin-top:48px;height:30px;width:30px;background-color:rgba(0,0,0,0.6);border-radius:5px;cursor:pointer;}';
+        css += '.BKMbutton2new {padding:2px;height:30px;width:30px;cursor:pointer;}';
+        css += '#BKMbutton2Icon {height:30px;opacity:0.75;background:url(' + iconAddLinkMap + ') no-repeat 0 0;}';
+        css += '#divContent {box-shadow: 0 4px 10px #aaa;}';
+        css += '.BKMbuttonSync {font-size:12px;font-weight:bold;text-align:center;padding:6px 8px;border-radius:5px;border:2px solid #C2C2C2;background-color:#CBCBCB;cursor:pointer;}';
+        css += '.BKMbuttonSync:hover {background-color:#93C4D3;}';
+        css += '.divHead {clear:both;height:28px;padding-left:5px;font-weight:bold;background-color:#CBCBCB;}';
+        css += '.divHeadName {float:left;text-align:left;vertical-align:bottom;}';
+        css += '.divHeadCountry {float:right;}';
+        css += '#selectCountry, #selectCountryS {height:22px;background-color:#CBCBCB;border:0;}';
+        css += '.divBKM {clear:both;line-height:21px;height:24px;border:1px solid #ededed;border-top:0;background-color:#ffffff;}';
+        css += '.divName {float:left;text-align:left;padding-left:5px;}';
+        css += '.divName a {text-decoration:none;}';
+        css += '.divSuppr {float:right;width:20px;}';
+        css += '.divSuppr img {height:16px;}';
+        css += '#BKMedit {clear:both;display:none;margin-bottom:10px;height:133px;border:2px solid #C2C2C2;box-shadow: 0 4px 10px #aaa;}';
+        css += '#divEditTitre {line-height:24px;height:24px;border-bottom:1px solid #C2C2C2;}';
+        css += '#divEdit {float:left;width:50px;height:23px;text-align:left;padding-left:5px;font-weight:bold;background-color:#CBCBCB;}';
+        css += '#divEditName {float:left;width:195px;height:23px;padding:0;padding-left:5px;border:0;margin:0;}';
+        css += '#divComm {float:left;width:100%;line-height:24px;height:23px;padding-left:5px;text-align:left;font-weight:bold;background-color:#CBCBCB;border-bottom:1px solid #C2C2C2;}';
+        css += '#divCommEdit {float:left;width:100%;height:81px;border:0;margin:0;padding:2px;resize:none;}';
+        css += '#divBackupTxt, #divSettingsContent {width:279px;min-height:150px;margin:2px 0 10px;resize:none;border:2px solid #C2C2C2;}';
+        css += '#divShareTxt {float:left;width:100%;height:118px;resize:none;margin-bottom:5px;border:0;border-bottom:1px solid #C2C2C2;}';
+        css += '.divComment {clear:both;position:relative;display:none;padding:1px 0 3px 20px;text-align:left;background:#CBCBCB url(' + iconComment + ') no-repeat left 2px;border-bottom:1px solid #C2C2C2;}';
+        css += '.BKMsync {padding: 5px 2px 25px;}';
+        css += '.BKMsync img {height:16px;}';
+        css += '#divBackup p, #BKMedit p, #divSettings p {margin:0;line-height:20px;text-align:justify;padding:5px;font-size:11px;}';
+        Scss.innerHTML = css;
+        document.body.appendChild(Scss);
+        BKMmainHtml();
+    }
+    function BKMmainHtml() {
+        //Create content in favorite's tab
+        var newTab = document.createElement('li');
+        newTab.innerHTML = '<a href="#sidepanel-bookmarks" data-toggle="tab" id="tabBKM"><span class="fa fa-star" title="Bookmarks"></span></a>';
+        BKMhandleClass.appendChild(newTab);
+        var addon = document.createElement('section');
+        addon.id = 'bookmarks-addon';
+        // Bookmarks header
+        var content = '<div style="float:left;margin-left:5px;"><b><a href="https://greasyfork.org/scripts/4515-wme-bookmarks" target="_blank"><u>WME Bookmarks</u></a></b> v' + BKMversion + '</div>';
+        content += '<div style="clear:both;float:left;width:100%;margin:5px;">';
+        content += '<div style="float:left;width:34px;"><img id="iconBookmarks" title="' + lang[0] + '" src="' + iconBookmarks + '" /></div>';
+        content += '<div id="shareButton" style="float:left;width:34px;"><img id="iconShare" title="' + lang[1] + '" src="' + iconNoShare + '" /></div>';
+        content += '<div style="float:left;width:34px;"><img id="iconHisto" title="' + lang[3] + '" src="' + iconNoHisto + '" /></div>';
+        content += '<div style="float:left;width:34px;"><img id="iconBackup" title="' + lang[4] + '" src="' + iconNoBackup + '" /></div>';
+        content += '<div style="float:left;width:34px;"><img id="iconSettings" title="' + lang[22] + '" src="' + iconNoSettings + '" /></div>';
+        content += '</div><div style="clear:both;"></div><div id="BKMedit"></div>'; // Edit and Share containers
+        content += '<div id="divContent">'; // Principal container
+        // Bookmarks tab
+        content += '<div id="divBookmarks" style="margin-bottom:10px;visibility:hidden;"><div class="divHead" id="divBookmarksHead">';
+        content += '<div class="divHeadName"><img style="padding-right:3px;height:18px;" src="' + iconBookmarks + '" />' + lang[6] + 's</div>';
+        content += '<div class="divHeadCountry"><select type="text" name="Country" id="selectCountry"></select></div>';
+        content += '</div><div id="divBookmarksContent"></div></div>';
+        // Friends Share tab
+        content += '<div id="divShare" style="margin-bottom:10px;visibility:hidden;"><div class="divHead" id="divShareHead">';
+        content += '<div class="divHeadName"><img style="padding:3px 3px 0 0;height:18px;" src="' + iconShare + '" />' + lang[1] + '</div>';
+        content += '<div class="divHeadCountry"><select type="text" name="Country" id="selectCountryS"></select></div>';
+        content += '</div><div id="divShareContent"></div></div>';
+        // Historic tab
+        content += '<div id="divHisto" style="margin-bottom:10px;visibility:hidden;"><div class="divHead">';
+        content += '<div class="divHeadName"><img style="padding:3px 3px 0 0;height:18px;" src="' + iconHisto + '" />' + lang[3] + '</div>';
+        content += '</div><div id="divHistoContent"></div></div>';
+        // Backup tab
+        content += '<div id="divBackup" style="margin-bottom:10px;visibility:hidden;"><div class="divHead">';
+        content += '<div class="divHeadName"><img style="padding:3px 3px 0 0;height:18px;" src="' + iconBackup + '" />' + lang[4] + '</div>';
+        content += '<div class="divSuppr"><a href="#"><img id="backupValid" title="' + lang[4] + '" src="' + iconValid + '" /></a></div></div>';
+        content += '<input type="radio" id="bckNew" name="typeBck" ' + (BKMsettingsBck=="new" ? ' checked' : '') + ' value="new" style="margin-left: 40px;" /> '+ tset[9];
+        content += '<input type="radio" id="bckAdd" name="typeBck" ' + (BKMsettingsBck=="add" ? ' checked' : '') + ' value="add" style="margin-left: 40px;" /> '+ tset[10];
+        content += '<textarea id="divBackupTxt"></textarea><p><img  title="Info" src="' + iconInfo + '" />' + text1 + '</p></div>';
+        // Settings tab
+        content += '<div id="divSettings" style="margin-bottom:10px;visibility:hidden;"><div class="divHead">';
+        content += '<div class="divHeadName"><img style="padding:3px 3px 0 0;height:22px;" src="' + iconSettings + '" />' + lang[22] + '</div>';
+        content += '</div><div id="divSettingsContent" style="padding:3px;line-height:22px;">';
+        content += '<input type="checkbox" id="chkSort" ' + (BKMsettingsSort ? ' checked' : '') + ' /> ' + tset[6] + '<br />';
+        content += '<input type="checkbox" id="chkZoom" ' + (BKMsettingsZoom ? ' checked' : '') + ' /> ' + tset[0] + '<br />';
+        content += '<input type="checkbox" id="chkLayers" ' + (BKMsettingsLayers ? ' checked' : '') + ' /> ' + tset[1] + '<br />';
+        content += '<input type="checkbox" id="chkLayersPaste" ' + (BKMsettingsPasteLayers ? ' checked' : '') + ' /> ' + tset[7] + '<br />';
+        content += '<input type="checkbox" id="chkServer" ' + (BKMsettingsServer ? ' checked' : '') + ' /> ' + tset[2] + '<br />';
+        content += '<input type="checkbox" id="chkSynchro" ' + (BKMsettingsSynchro ? ' checked' : '') + ' /> ' + tset[3] + '<br />';
+        content += '<input type="checkbox" id="chkLastClic" ' + (BKMsettingsClic ? ' checked' : '') + ' /> ' + tset[11] + '<br />';
+        content += '<input type="button" id="razButton1" value="" style="height: 13px;" /> ' + tset[4] + '<br />';
+        content += '<input type="button" id="razButton2" value="" style="height: 13px;" /> ' + tset[5] + '<br />';
+        content += '<input type="button" id="razButton3" value="" style="height: 13px;" /> ' + tset[8] + '<br />';
+        content += '</div><p><img  title="Info" src="' + iconInfo + '" />' + text3 + '</p></div></div>';
+        addon.innerHTML = content;
+        addon.id = 'sidepanel-bookmarks';
+        addon.className = 'tab-pane';
+        BKMhandleClass2.appendChild(addon);
+        // Tabs actions
+        select(countries, 'selectCountry');
+        select(countriesS, 'selectCountryS');
+        bookmarksToggle();
+        getId('iconBookmarks').onclick = (function () { bookmarksToggle(); });
+        getId('iconShare').onclick = (function () { shareToggle(); });
+        getId('iconHisto').onclick = (function () { histoToggle(); });
+        getId('iconBackup').onclick = (function () { backupToggle(); });
+        getId('iconSettings').onclick = (function () { settingsToggle(); });
+        // Buttons actions
+        getId('bckNew').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            a.backup="new";
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('bckAdd').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            a.backup="add";
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('chkSort').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            (getId('chkSort').checked ? a.sort=true : a.sort=false)
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('chkZoom').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            (getId('chkZoom').checked ? a.zoom=true : a.zoom=false)
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('chkLayers').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            (getId('chkLayers').checked ? a.layers=true : a.layers=false)
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('chkLayersPaste').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            (getId('chkLayersPaste').checked ? a.layersPaste=true : a.layersPaste=false)
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('chkServer').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            (getId('chkServer').checked ? a.server=true : a.server=false)
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('chkSynchro').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            if (getId('chkSynchro').checked) {
+                a.synchro=true;
+                $('#iconShare').animate({ width: '24px' }, 200);
+                $('#shareButton').animate({ width: '34px' }, 250);
+            } else {
+                a.synchro=false;
+                $('#iconShare').animate({ width: '0' }, 200);
+                $('#shareButton').animate({ width: '0' }, 250);
+            }
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('chkLastClic').onclick = (function () {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            (getId('chkLastClic').checked ? a.lclic=true : a.lclic=false)
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+            loadSettings();
+        });
+        getId('razButton1').onclick = (function () {
+            var answer = window.confirm(tset[4] + ' ?');
+            if (answer) {
+                localStorage.setItem('WMEBookmarks', '[]');
+                BKMtableCountries();
+                select(countries, 'selectCountry');
+            }
+        });
+        getId('razButton2').onclick = (function () {
+            var answer = window.confirm(tset[5] + ' ?');
+            if (answer) { initBookmarks(); }
+        });
+        getId('razButton3').onclick = (function () {
+            var answer = window.confirm(tset[8] + ' ?');
+            if (answer) { localStorage.setItem('WMEHistoric', '[]'); }
+        });
+        if (debug) { console.info('WME Bookmarks HTML loaded'); }
+        // Button on the map
+        setTimeout(function () {
+            var addNodeButton = document.createElement('div');
+            addNodeButton.id = 'addNodeButton';
+            addNodeButton.className = 'BKMbutton2new';
+            addNodeButton.innerHTML = '<div id="BKMbutton2Icon"></div>';
+            addNodeButton.onclick = BKMinsertPermalink;
+            getElementsByClassName('topbar') [0].appendChild(addNodeButton);
+            getElementsByClassName('topbar') [0].style.padding = '0 10px';
+            getElementsByClassName('location-info') [0].style.marginLeft = '35px';
+            if (getElementsByClassName('location-info') [0].innerHTML === '') { getElementsByClassName('area-managers-region') [0].style.marginLeft = '35px'; }
+            addNodeButton.onmouseover = (function () { getId('BKMbutton2Icon').style.opacity = '1'; });
+            addNodeButton.onmouseout = (function () { getId('BKMbutton2Icon').style.opacity = '0.6'; });
+        }, 1000);
+
+        if (BKMsettingsSynchro === false) {
+            $('#iconShare').animate({ width: '0' }, 200);
+            $('#shareButton').animate({ width: '0' }, 250);
+        }
+        BMKcheckAutoSave();
+        BKMaddButtonIfLoad();
+        timer = setTimeout(BKMcheckActiveCountry, 5000);
+    }
+
+    // ***************
+    // ** BOOKMARKS **
+    // ***************
+
+    function initBookmarks() {
+        if (debug) { console.log('WME Bookmarks: Send: ' + BKMusername + ' to init'); }
+        var params = {
+            url: 'http://4bphotoabbatienne.fr/bkm.php?initbookmarks=' + BKMusername,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            data: null,
+            method: 'POST'
+        };
+        BKMDownloadHelper.add(params, function (data) {
+            if (debug) { console.log('WME Bookmarks: Server Response: ', data); }
+            if (data.status == 'success') {
+                if (data.data != 'Check') {
+                    getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" /><span style="color:red;">' + lang[19] + '</span></div>';
+                    setTimeout(Getbookmarks, 1000);
+                } else {
+                    getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" /><span style="color:darkgreen;">' + lang[20] + '</span></div>';
+                    BKMaddButtonIfLoad();
+                    setTimeout(reloadHtmlBookmarks, 1000);
+                }
+            }
+        });
+    }
+    function getBookmarks() {
+        var listFav = localStorage.WMEBookmarks;
+        var params = {
+            url: 'http://4bphotoabbatienne.fr/bkm.php?getbookmarks=' + BKMusername,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            data: null,
+            method: 'GET'
+        };
+        BKMDownloadHelper.add(params, function (data) {
+            if (data.status == 'success') {
+                if (isJsonString(data.data)) {
+                    if (_.isEqual(JSON.parse(listFav), JSON.parse(data.data.replace(/\\/g, ""))) !== true && data.data && BKMsettingsSynchro === true) {
+                        if (debug) { console.log('WME Bookmarks: From Server: ', data.data.replace(/\\/g, "")); }
+                        if (debug) { console.log('WME Bookmarks: From local : ', listFav); }
+                        clearTimeout(timer);
+                        $('#BKMbutton2Icon').hide();
+                        $('addNodeButton').hide();
+                        getId('addNodeButton').style.height='0';
+                        getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" />' + lang[5] + '</div><div class="divSuppr"><img id="SyncCancel" title="' + lang[9] + '" src="' + iconCancel + '" /></div>';
+                        if (data.data != '[]') {
+                            var servToPC = '<div id="serv2Loc" class="BKMbuttonSync" style="float:left;"><img src="'+ iconServer +'" alt="" /> '+ lang[7] +' > PC <img src="'+ iconHome +'" alt="" /></div>';
+                        }  else { var servToPC = ''; }
+                        if (listFav != '[]') {
+                            var PCToServ = '<div id="loc2Serv" class="BKMbuttonSync" style="float:right;"><img src="'+ iconHome +'" alt="" /> PC > '+ lang[7] +' <img src="'+ iconServer +'" alt="" /></div>';
+                        } else { var PCToServ = ''; }
+                        getId('divBookmarksContent').innerHTML = '<div class="BKMsync" style="clear:both; padding-bottom:20px;"><div class="BKMsync">'+ servToPC + PCToServ +'</div>';
+                        if (getId('serv2Loc')) getId('serv2Loc').onclick = (function(){serv2Loc(data.data);});
+                        if (getId('loc2Serv')) getId('loc2Serv').onclick = (function(){loc2Serv();});
+                    }
+                    else {
+                        reloadHtmlBookmarks();
+                        if (debug) { console.log('WME Bookmarks: Bookmarks Sync !'); }
+                    }
+                } else {
+                    if (debug) { console.log('WME Bookmarks: Server not responding or data corrupted'); }
+                    clearTimeout(timer);
+                    $('#BKMbutton2Icon').hide();
+                    $('addNodeButton').hide();
+                    getId('addNodeButton').style.height='0';
+                    getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" />' + lang[5] + '</div><div class="divSuppr"><a href="#"><img id="SyncCancel" title="' + lang[9] + '" src="' + iconCancel + '" /></a></div>';
+                    getId('divBookmarksContent').innerHTML = '<div class="BKMsync" style="padding-bottom:20px;"><div id="servhs" class="BKMbuttonSync" style="background-color:#F77;"><span style="color:red;">Error</span> <span style="font-size:10px;">Server not responding or data corrupted<br/>Click me for desync</span></div></div>';
+                    getId('servhs').onclick = (function () {
+                        var a=JSON.parse(localStorage.WMEBookmarksSettings);
+                        a.synchro=false;
+                        $('#iconShare').animate({ width: '0' }, 200);
+                        $('#shareButton').animate({ width: '0' }, 250);
+                        localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+                        reloadHtmlBookmarks();
+                        getId('chkSynchro').checked=false;
+                    });
+                }
+            }
+        }, null);
+        function serv2Loc(data) {
+            localStorage.setItem('WMEBookmarks', data);
+            BKMaddButtonIfLoad();
+            reloadHtmlBookmarks();
+        }
+        function loc2Serv() {
+            getId('divBookmarksContent').innerHTML = '';
+            BKMaddButtonIfLoad();
+            BKMpostBookmarks();
+        }
+    }
+    function reloadHtmlBookmarks() {
+        var content = '<div class="divHeadName"><img style="padding-right:3px; height:18px;" src="' + iconBookmarks + '" />' + lang[6] + 's</div>';
+        content += '<div class="divHeadCountry"><select type="text" name="Country" id="selectCountry"></select></div>';
+        getId('divBookmarksHead').innerHTML = content;
+        select(countries, 'selectCountry');
+        getId('selectCountry').onchange = (function () {
+            clearTimeout(timer);
+            BKMcheckActiveCountry();
+            BKMcountryActive = getId('selectCountry').value;
+            getId('divBookmarksContent').innerHTML = '';
+            loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+        });
+        getId('divBookmarksContent').innerHTML = '';
+        loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+        BKMtableCountries();
+    }
+
+    // ***************
+    // **  SHARED   **
+    // ***************
+
+    function getShared() {
+        var listFav = localStorage.WMEBookmarksShared;
+        var params = {
+            url: 'http://4bphotoabbatienne.fr/bkm.php?getshared='+ BKMusername,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            data: null,
+            method: 'GET'
+        };
+        BKMDownloadHelper.add(params, function (data) {
+            if (data.status == 'success') {
+                if (_.isEqual(JSON.parse(listFav), JSON.parse(data.data.replace(/\\/g, ""))) !== true && data.data && BKMsettingsSynchro === true) {
+                    if (debug) { console.log('WME Bookmarks: From Server: ', JSON.parse(data.data)); }
+                    if (debug) { console.log('WME Bookmarks: From local: ', JSON.parse(listFav)); }
+                    localStorage.setItem('WMEBookmarksShared', data.data);
+                    reloadHtmlShared();
+                } else {
+                    reloadHtmlShared();
+                    if (debug) { console.log('WME Bookmarks: Shared Sync !'); }
+                }
+            }
+        }, null);
+    }
+    function BKMedit(data) { //Show Share DIV
+        clearTimeout(timer);
+        $('#BKMedit').slideDown(200);
+        $('#divContent').slideUp(1000);
+        var content1 = '<div id="divEditTitre"><div id="divEdit" style="width:80px;">' + lang[6] + '</div><input type="text" id="divEditName" style="width:165px;" value="'+ data.name.replace(/"/g, '&quot;') +'" readonly /><input type="hidden" id="permalink" value="' + data.perma.lon +'|'+ data.perma.lat + '" />';
+        content1 += '<div class="divSuppr"><a href="#"><img id="shareValid" margin-top:3px;" title="' + lang[8] + '" src="' + iconValid + '" /></a></div>';
+        content1 += '</div><textarea id="divShareTxt"></textarea><p><img  title="Info" src="' + iconInfo + '" />' + text2 + '</p>';
+        getId('BKMedit').innerHTML = content1;
+        if (!data.share) {
+            data.share = lang[23];
+            getId('divShareTxt').style.color = '#aaa';
+        }
+        getId('divShareTxt').onclick = (function () {
+            if (getId('divShareTxt').value == lang[23]) {
+                getId('divShareTxt').value = '';
+                getId('divShareTxt').style.color = '#000';
+            }
+        });
+        getId('divShareTxt').innerHTML = data.share;
+        getId('divShareTxt').onkeyup = (function () {
+            var t = getId('divShareTxt').value;
+            if (t === '') { getId('divShareTxt').innerHTML = data.share; }
+            getId('divShareTxt').value = t.replace(',', ';').replace(' ', ';').replace(';;', ';');
+        });
+        getId('shareValid').onclick = (function () {
+            data.share = getId('divShareTxt').value;
+            if (data.share !== lang[23]) {
+                var toSave=[];
+                var a = JSON.parse(localStorage.WMEBookmarks);
+                for (var p in a) {
+                    if(!a.hasOwnProperty(p)) continue;
+
+                    //Redo Bookmark
+                    var bNew={};
+                    bNew.country=a[p].country;
+                    bNew.name=a[p].name;
+                    bNew.perma=a[p].perma;
+                    bNew.comm=a[p].comm;
+                    if (getId('permalink').value == a[p].perma.lon+'|'+a[p].perma.lat) {
+                        bNew.share=data.share;
+                        if (BKMsettingsSynchro === true) {
+                            if (debug) { console.log('WME Bookmarks: SHARE', BKMusername, bNew); }
+                            BKMupdateBookmarks('SHARE', BKMusername, bNew, '');
+                        }
+                    } else { bNew.share=a[p].share; }
+                    //Store Bookmark
+                    toSave.push(bNew);
+                }
+                localStorage.setItem('WMEBookmarks', JSON.stringify(toSave));
+            }
+            $('#divContent').slideDown(1000);
+            $('#BKMedit').slideUp(500);
+        });
+        BKMcheckActiveCountry();
+        getId('divBookmarksContent').innerHTML = '';
+        loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+    }
+    function reloadHtmlShared() {
+        var content = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconShare + '" />' + lang[1] + '</div>';
+        content += '<div class="divHeadCountry"><select type="text" name="Country" id="selectCountryS"></select></div>';
+        getId('divShareHead').innerHTML = content;
+        select(countriesS, 'selectCountryS');
+        getId('selectCountryS').onchange = (function () {
+            clearTimeout(timer);
+            BKMcheckActiveCountry();
+            BKMcountryActive = getId('selectCountryS').value;
+            getId('divShareContent').innerHTML = '';
+            loadBookmarks('WMEBookmarksShared', 'divShareContent');
+        });
+        getId('divShareContent').innerHTML = '';
+        loadBookmarks('WMEBookmarksShared', 'divShareContent');
+    }
+
+    // ***************
+    // **  BACKUP   **
+    // ***************
+
+    function BKMbackup() {
+        var a = localStorage.WMEBookmarks, toshow = '';
+        getId('divBackupTxt').value='';
+        if (a) {
+            a = JSON.parse(a);
+            for (var p in a) {
+                if(!a.hasOwnProperty(p)) continue;
+                var permalink = a[p].perma.lon +"|"+ a[p].perma.lat;
+                if (typeof(a[p].perma.zoom) !== 'undefined') { permalink += "|"+ a[p].perma.zoom; } else { permalink += "|"; }
+                if (typeof(a[p].perma.layers) !== 'undefined') { permalink += "|"+ a[p].perma.layers; } else { permalink += "|"; }
+                // Objects
+                if (typeof(a[p].perma.segments) !== 'undefined') { permalink += "|s:"+ a[p].perma.segments; }
+                else if (typeof(a[p].perma.nodes) !== 'undefined') { permalink += "|n:"+ a[p].perma.nodes; }
+                else if (typeof(a[p].perma.venues) !== 'undefined') { permalink += "|v:"+ a[p].perma.venues; }
+                else { permalink += "|"; }
+                // New filters
+                if (typeof(a[p].perma.env) !== 'undefined') { permalink += "|"+ a[p].perma.env; } else { permalink += "|"; }
+                if (typeof(a[p].perma.MP) !== 'undefined') { permalink += "|"+ a[p].perma.MP; } else { permalink += "|"; }
+                if (typeof(a[p].perma.UR) !== 'undefined') { permalink += "|"+ a[p].perma.UR; } else { permalink += "|"; }
+                if (typeof(a[p].perma.MC) !== 'undefined') { permalink += "|"+ a[p].perma.MC; } else { permalink += "|"; }
+
+                if (typeof(a[p].comm) !== 'undefined') { permalink += ";"+ a[p].comm; } else { permalink += ";"; }
+                if (typeof(a[p].share) !== 'undefined') { permalink += ";"+ a[p].share; } else { permalink += ";"; }
+
+                //Push to generate CSV
+                toshow += a[p].country +";"+ a[p].name +";"+ permalink +"\n";
+            }
+            getId('divBackupTxt').value=toshow;
+            getId('divBackupTxt').onclick=(function () {
+                getId('divBackupTxt').focus();
+                getId('divBackupTxt').select();
+            });
+        }
+        getId('backupValid').onclick = backup;
+        function backup() {
+            if (getId('bckAdd').checked===true) {
+                var lStorage=JSON.parse(localStorage.WMEBookmarks);
+            } else { //bckNew
+                localStorage.setItem('WMEBookmarks', '[]');
+                var lStorage=[];
+            }
+            var a = getId('divBackupTxt').value;
+            var b = a.split('\n');
+
+            for (var i=0; b[i]; i++){
+                var c = b[i].split(';');
+                var bNew ={};
+                bNew.country = c[0];
+                bNew.name = c[1];
+                bNew.perma=BKMconvertPermalink(c[2]);
+                bNew.comm = c[3];
+                bNew.share = c[4];
+                if (lStorage.map(function(e) { return e.perma.lon; }).indexOf(bNew.perma.lon) == -1 && lStorage.map(function(e) { return e.perma.lat; }).indexOf(bNew.perma.lat) == -1) { lStorage.push(bNew); } //Add new entry only
+            }
+            localStorage.setItem('WMEBookmarks', JSON.stringify(lStorage));
+            BKMtableCountries();
+            bookmarksToggle();
+            if (BKMsettingsSynchro === true) { BKMpostBookmarks(); }
+        }
+    }
+
+    // ***************************
+    // ** ACTIONS WITH BOOKMARK **
+    // ****************************
+
+    function BKMhtmlEditName(container, data) { //Show Edit DIV
+        clearTimeout(timer);
+        $('#BKMedit').slideDown(200);
+        if (container == 'divBookmarksContent') { getId('BKMedit').style.height = '133px'; }
+        var content1 = '<div id="divEditTitre"><div id="divEdit">' + lang[6] + '</div><input type="text" id="divEditName" value="' + data.name + '" /><input type="hidden" id="permalink" value="' + data.perma.lon +'|'+ data.perma.lat + '" />';
+        content1 += '<div class="divSuppr"><a href="#"><img id="EditValid" margin-top:3px;" title="' + lang[8] + '" src="' + iconValid + '" /></a></div>';
+        content1 += '</div><div id="divComm">' + lang[14] + '</div></div><textarea id="divCommEdit">';
+        if (data.comm === '') { content1 += ''; } else { content1 += data.comm; }
+        content1 += '</textarea>';
+        getId('BKMedit').innerHTML = content1;
+        getId('divEditName').focus();
+        getId('divEditName').select();
+        getId('EditValid').onclick = (function(){ BKMeditName(container,data); });
+    }
+    function BKMeditName(container, data) { //Action after editing name or comment (DB)
+        $('#BKMedit').slideUp(200);
+        var toSave=[];
+
+        //Bookmarks list update
+        if (container === 'divBookmarksContent') {
+            var a = JSON.parse(localStorage.WMEBookmarks);
+            for (var p in a) {
+                if(!a.hasOwnProperty(p)) continue;
+
+                //Redo Bookmark
+                var bNew={};
+                bNew.country=a[p].country;
+                bNew.name=a[p].name;
+                bNew.perma=a[p].perma;
+                bNew.comm=a[p].comm;
+                bNew.share=a[p].share;
+                if (getId('permalink').value == a[p].perma.lon+'|'+a[p].perma.lat) {
+                    bNew.name=getId('divEditName').value;
+                    bNew.comm=getId('divCommEdit').value;
+                    if (BKMsettingsSynchro === true) {
+                        if (debug) { console.log('WME Bookmarks: UPDATE', BKMusername, bNew); }
+                        BKMupdateBookmarks('UPDATE',BKMusername, bNew, '');
+                    }
+                }
+                //Store Bookmark
+                toSave.push(bNew);
+            }
+            localStorage.setItem('WMEBookmarks', JSON.stringify(toSave));
+        }
+
+        //Sharing list update
+        else {
+            var a = JSON.parse(localStorage.WMEBookmarksShared);
+            for (var p in a) {
+                if(!a.hasOwnProperty(p)) continue;
+
+                //Redo Bookmark
+                var bNew={};
+                bNew.owner=a[p].owner;
+                bNew.country=a[p].country;
+                bNew.name=a[p].name;
+                bNew.perma=a[p].perma;
+                bNew.comm=a[p].comm;
+                bNew.share=a[p].share;
+                if (getId('permalink').value == a[p].perma.lon+'|'+a[p].perma.lat) {
+                    bNew.name=getId('divEditName').value;
+                    bNew.comm=getId('divCommEdit').value;
+                    if (BKMsettingsSynchro === true) {
+                        if (debug) { console.log('WME Bookmarks: UPDATE', a[p].owner, bNew); }
+                        BKMupdateBookmarks('UPDATE',a[p].owner, bNew, '');
+                    }
+                }
+                //Store Bookmark
+                toSave.push(bNew);
+            }
+            localStorage.setItem('WMEBookmarksShared', JSON.stringify(toSave));
+        }
+        //Reload HTML
+
+        BKMcheckActiveCountry();
+        if (container == 'divBookmarksContent') {
+            getId('divBookmarksContent').innerHTML = '';
+            loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+        } else {
+            getId('divShareContent').innerHTML = '';
+            loadBookmarks('WMEBookmarksShared', 'divShareContent');
+        }
+    }
+    function BKMsuppr(name, id, container) { //Action after delete a bookmark (DB)
+        clearTimeout(timer);
+        if (debug) { console.info('WME Bookmarks Suppr: ', id); }
+        var answer = window.confirm(lang[11] + ' ' + name + ' ?');
+        if (answer) {
+            var toSave=[];
+            if (container === 'divHistoContent') {
+                var a = JSON.parse(localStorage.WMEHistoric);
+                for (var i = 0; a[i]; i++) {
+                    var bNew={};
+                    bNew.date=a[i].date;
+                    bNew.perma=a[i].perma;
+                    bNew.name=a[i].name;
+                    if (bNew.perma.toSource() !== id.toSource()) { toSave.push(bNew); }
+                }
+                localStorage.setItem('WMEHistoric', JSON.stringify(toSave));
+                getId('divHistoContent').innerHTML = '';
+                loadBookmarks('WMEHistoric', 'divHistoContent');
+            }
+            else if (container === 'divBookmarksContent') { // Suppr own bookmark
+                var a = JSON.parse(localStorage.WMEBookmarks);
+                for (var i = 0; a[i]; i++) {
+                    var bNew={};
+                    bNew.country=a[i].country;
+                    bNew.name=a[i].name;
+                    bNew.perma=a[i].perma;
+                    bNew.comm=a[i].comm;
+                    bNew.share=a[i].share;
+                    if (bNew.perma.toSource() !== id.toSource()) { toSave.push(bNew); }
+                    else {
+                        if (BKMsettingsSynchro === true) {
+                            if (debug) { console.log('WME Bookmarks: DELETE', BKMusername, bNew); }
+                            BKMupdateBookmarks('DELETE', BKMusername, bNew, '');
+                        }
+                    }
+                }
+                localStorage.setItem('WMEBookmarks', JSON.stringify(toSave));
+                getId('divBookmarksContent').innerHTML = '';
+                loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+            } else { // Unshare a bookmark
+                var a = JSON.parse(localStorage.WMEBookmarksShared);
+                for (var i = 0; a[i]; i++) {
+                    var bNew={};
+                    bNew.owner = a[i].owner;
+                    bNew.country = a[i].country;
+                    bNew.name = a[i].name;
+                    bNew.perma = a[i].perma;
+                    bNew.comm = a[i].comm;
+                    bNew.share = a[i].share;
+                    if (bNew.perma.toSource() !== id.toSource()) { toSave.push(bNew); }
+                    else {
+                        if (BKMsettingsSynchro === true) {
+                            if (debug) { console.log('WME Bookmarks: UNSHARE', a[i].owner, bNew); }
+                            BKMupdateBookmarks('UNSHARE', BKMusername, bNew, '');
+                        }
+                    }
+                }
+                localStorage.setItem('WMEBookmarksShared', JSON.stringify(toSave));
+                getId('divShareContent').innerHTML = '';
+                loadBookmarks('WMEBookmarksShared', 'divShareContent');
+            }
+            getId('BKMedit').style.display = 'none';
+        }
+        BKMcheckActiveCountry();
+    }
+    function BKMrelocate(oldPerma, name, iconId) { // Action after relocate a bookmark (DB)
+        clearTimeout(timer);
+        var answer = window.confirm(lang[13] + ' Lon/Lat/Zoom ? (' + name + ')');
+        if (answer) {
+            var toSave=[];
+            link={}; getLink(document.getElementsByClassName('WazeControlPermalink')[0].getElementsByClassName('permalink')[0].href);
+            //Bookmarks list update
+            if (getId('divBookmarks').style.visibility == 'visible') {
+                var a = JSON.parse(localStorage.WMEBookmarks);
+                for (var i = 0; a[i]; i++) {
+                    var bNew={};
+                    bNew.country = a[i].country;
+                    bNew.name = a[i].name;
+                    bNew.perma = a[i].perma;
+                    bNew.comm = a[i].comm;
+                    bNew.share = a[i].share;
+                    if (bNew.perma.toSource() === oldPerma.toSource()) {
+                        bNew.perma = link;
+                        if (BKMsettingsSynchro === true) {
+                            if (debug) { console.log('WME Bookmarks: RELOCATE New', BKMusername, bNew.perma, oldPerma); }
+                            BKMupdateBookmarks('RELOCATE', BKMusername, bNew, oldPerma);
+                        }
+                    }
+                    toSave.push(bNew);
+                }
+                localStorage.setItem('WMEBookmarks', JSON.stringify(toSave));
+                getId('divBookmarksContent').innerHTML = '';
+                loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+            }
+            //Sharing list update
+            if (getId('divShare').style.visibility == 'visible') {
+                var a = JSON.parse(localStorage.WMEBookmarksShared);
+                for (var i = 0; a[i]; i++) {
+                    var bNew={};
+                    bNew.owner = a[i].owner;
+                    bNew.country = a[i].country;
+                    bNew.name = a[i].name;
+                    bNew.perma = a[i].perma;
+                    bNew.comm = a[i].comm;
+                    bNew.share = a[i].share;
+                    if (bNew.perma.toSource() === oldPerma.toSource()) {
+                        bNew.perma = link;
+                        if (BKMsettingsSynchro === true) {
+                            if (debug) { console.log('WME Bookmarks: RELOCATE',a[i].owner, bNew,  oldPerma); }
+                            BKMupdateBookmarks('RELOCATE', a[i].owner, bNew, oldPerma);
+                        }
+                    }
+                    toSave.push(bNew);
+                }
+                localStorage.setItem('WMEBookmarksShared', JSON.stringify(toSave));
+                getId('divBookmarksContent').innerHTML = '';
+                loadBookmarks('WMEBookmarksShared', 'divBookmarksContent');
+            }
+        }
+        else { getId('iconRelocate_'+iconId).src=iconNoRelocate; }
+        BKMcheckActiveCountry();
+    }
+    function BKMinsertPermalink() { // Action when you add a new permalink (DB)
+        BKMcountryActive = W.model.countries.top.name;
+        link={}; getLink(document.getElementsByClassName('WazeControlPermalink')[0].getElementsByClassName('permalink')[0].href);
+
+        //JSON for new permalink
+        var bNew={};
+        bNew.country=BKMcountryActive;
+        bNew.name=getName();
+        bNew.perma=link;
+        bNew.comm='';
+        bNew.share='';
+
+        //Add in localStorage
+        var lStorage = JSON.parse(localStorage.WMEBookmarks);
+        lStorage.push(bNew);
+        localStorage.setItem('WMEBookmarks', JSON.stringify(lStorage));
+        if (BKMsettingsSynchro === true) {
+            if (debug) { console.log('WME Bookmarks: ADD', BKMusername, bNew); }
+            BKMupdateBookmarks('ADD', BKMusername, bNew, '');
+        }
+
+        //Add in HTML table
+        BKMtableHtml   ('divBookmarksContent', bNew, 9999);
+        BKMhtmlEditName('divBookmarksContent', bNew);
+
+        //Reload Select list if new country
+        if (countries.indexOf(BKMcountryActive) == - 1) {
+            BKMtableCountries();
+            select(countries, 'selectCountry');
+        }
+        W.selectionManager.unselectAll();
+        getId('tabBKM').click();
+    }
+    function BKMPastePerma() { // Action when you paste a permalink
+        setTimeout(function () {
+            var exp = new RegExp('/(https?://(?:www.|(?!www))[^s.]+.[^s]{2,}|www.[^s]+.[^s]{2,})', 'g');
+            var a = BKMmapSearch.value;
+            var b = BKMmapSearch.innerHTML;
+
+            //Paste a permalink
+            if (a.match(exp) && a.match(/lon/g) && a.match(/lat/g)) { // WME or Livemap URL
+                link={}; getLink(a);
+                if (debug) { console.log('WME Bookmarks link: ', link); }
+                BKMjump(BKMcountryActive,link,'paste');
+                setTimeout((function(){BKMaddHisto(link);}), 2500);
+            }
+            else if (a.match(exp) && a.match(/google/g) && a.match(/map/g) && a.match(/@/g)) { // Google Map URL
+                var b=a.split('@'), c=b[1].split('/'), d=c[0].split(',');
+                link.lat = d[0];
+                link.lon = d[1];
+                link.zoom = (d[2].substring(0, d[2].length-1)-12);
+                if (debug) { console.log('WME Bookmarks link: ', link); }
+                BKMjump(BKMcountryActive,link,'paste');
+                setTimeout((function(){BKMaddHisto(link);}), 2500);
+            }
+            //Paste an ID
+            else if (a.match(/\./g) && isNaN(a.replace(".",""))===false && a.length > 20) { //venue
+                objectsIsLoaded('vn:'+ a);
+            }
+            else if (isNaN(a)===false && a.length > 7) { //Segment or node
+                objectsIsLoaded('sg:'+ a);
+            }
+            //Reinit search-query
+        }, 100);
+    }
+    function BKMjump(country,data,action) { // Action when you click a link
+        //lastclic
+        if (/link/.test(action) && BKMsettingsClic) {
+            for (var i=1; getId("link"+i); i++) {
+                getId("link"+i).style.color='#59899e';
+                if ("link"+i===action) {
+                    getId("link"+i).style.color='#26bae8';
+                    var a=JSON.parse(localStorage.WMEBookmarksSettings);
+                    a.lastclic=action;
+                    localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+                }
+            }
+        }
+        //Move to
+        var xy = OL.Layer.SphericalMercator.forwardMercator(parseFloat(data.lon), parseFloat(data.lat));
+        W.map.setCenter(xy);
+        if (debug) { console.log('BKMjump',country,data,action); }
+        //Options
+        if (BKMsettingsZoom && data.zoom) { W.map.zoomTo(data.zoom); }
+        if (BKMsettingsServer) { W.model.events.register("mergeend", null, mapLoaded); }
+        if (action != 'paste' && BKMsettingsLayers && data.layers) { layersLoaded(data.layers); } // layers when bookmarks
+        if (action === 'paste' && BKMsettingsPasteLayers && data.layers) { layersLoaded(data.layers); } // layers when paste form searchbar
+        if (typeof (data.segments)   != 'undefined') { objectsIsLoaded('sg:'+ data.segments); }
+        else if (typeof (data.nodes) != 'undefined') { objectsIsLoaded('nd:'+ data.nodes); }
+        else if (typeof (data.venues)!= 'undefined') { objectsIsLoaded('vn:'+ data.venues); }
+        else if (typeof (data.MC) != 'undefined' && data.MC != 0) { objectsIsLoaded('mc:'+ data.MC); }
+        else if (typeof (data.UR) != 'undefined' && data.UR != 0) { objectsIsLoaded('ur:'+ data.UR); }
+        else if (typeof (data.MP) != 'undefined' && data.MP != 0) { objectsIsLoaded('mp:'+ data.MP); }
+        else { colorSearch(); }
+        //Reload list if country is changed
+        if (country != W.model.countries.top.name) {
+            getId('divBookmarksContent').innerHTML = '';
+            loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+        }
+
+        BKMaddButtonIfLoad();
+    }
+    function BKMpostBookmarks() {
+        var listFav = localStorage.WMEBookmarks;
+        if (debug) { console.log('WME Bookmarks: Send Data: ', JSON.parse(listFav)); }
+        var params={
+            url: "http://4bphotoabbatienne.fr/bkm.php",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            data: "nickname="+BKMusername+"&postbookmarks=" + listFav,
+            method: 'POST'
+        };
+        BKMDownloadHelper.add(params, function (data) {
+            if (debug) { console.log('WME Bookmarks: Server Response: ', data); }
+            if (data.status == 'success') {
+
+                if (data.data != 'Check') {
+                    getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" /><span style="color:red;">' + lang[19] + '</span></div>';
+                    setTimeout(Getbookmarks, 1000);
+                } else {
+                    getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" /><span style="color:darkgreen;">' + lang[20] + '</span></div>';
+                    BKMaddButtonIfLoad();
+                    setTimeout(reloadHtmlBookmarks, 1000);
+                }
+            }
+        });
+    }
+    function BKMupdateBookmarks(action, owner, data, arg) {
+        var bNew = {};
+        bNew.action=action;
+        bNew.owner=owner;
+        bNew.arg=arg;
+        bNew.data=data;
+        if (debug) { console.log('WME Bookmarks: Send Update: ', bNew); }
+        var params={
+            url: "http://4bphotoabbatienne.fr/bkm.php",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            data: "addbookmark=" + JSON.stringify(bNew),
+            method: 'POST'
+        };
+        BKMDownloadHelper.add(params, function (data) {
+            if (debug) { console.log('WME Bookmarks: Server Response: ', data); }
+            if (data.status == 'success') {
+                if (data.data != 'Check') {
+                    getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" /><span style="color:red;">' + lang[19] + '</span></div>';
+                    setTimeout(Getbookmarks, 1000);
+                } else {
+                    getId('divBookmarksHead').innerHTML = '<div class="divHeadName"><img style="padding:3px 3px 0 0; height:18px;" src="' + iconSynchro + '" /><span style="color:darkgreen;">' + lang[20] + '</span></div>';
+                    BKMaddButtonIfLoad();
+                    setTimeout(reloadHtmlBookmarks, 1000);
+                }
+            }
+        });
+    }
+
+    // ****************
+    // **  ROUTINES  **
+    // ****************
+
+    function loadBookmarks(storage, dContainer) { //Fill HTML with localstorage
+        var lStorage = localStorage.getItem(storage);
+        if (lStorage) {
+            getId(dContainer).innerHTML = '';
+            var a = JSON.parse(lStorage);
+            if (BKMsettingsSort) { a.reverse(); }
+            var i=1;
+            for (var p in a) {
+                if(!a.hasOwnProperty(p)) continue;
+                if (dContainer == 'divHistoContent') { BKMhistoHtml(a[p]); }
+                if (a[p].country == BKMcountryActive) {
+                    BKMtableHtml(dContainer, a[p], i);
+                    i++;
+                }
+            }
+        }
+    }
+    function BKMaddButtonIfLoad() { //Show Pin if WME (permalink) is ready
+        var a = getElementsByClassName('WazeControlPermalink') [0].innerHTML;
+        if (!a.match(/lon/g)) {
+            getId('addNodeButton').style.height='0';
+            $('#BKMbutton2Icon').hide();
+            $('addNodeButton').hide();
+            setTimeout(BKMaddButtonIfLoad, 500);
+            return;
+        } else {
+            $('#BKMbutton2Icon').show();
+            $('addNodeButton').show();
+        }
+    }
+    function BMKcheckStorage() {
+        var settings = JSON.parse(localStorage.WMEBookmarksSettings);
+        if (!settings.version) {
+            //Convert
+            if (debug) { console.info('WME Bookmarks : Convert old data to new JSON'); }
+
+            var a = JSON.parse(localStorage.getItem('WMEBookmarks')), lStorage=[];
+            localStorage.setItem('WMEBookmarksShared', '[]');
+            localStorage.setItem('WMEBookmarks', '[]');
+            localStorage.setItem('WMEHistoric', '[]');
+            for (var p in a) {
+                if(!a.hasOwnProperty(p)) continue;
+
+                //Redo Bookmark
+                var bNew={};
+                bNew.country=a[p].country;
+                bNew.name=a[p].name;
+                bNew.perma=BKMconvertPermalink(a[p].coord);
+                bNew.comm=a[p].comm;
+                bNew.share=a[p].share;
+
+                //Store Bookmark
+                lStorage.push(bNew);
+            }
+            localStorage.setItem('WMEBookmarks', JSON.stringify(lStorage));
+            if (debug) { console.info('WME Bookmarks : New JSON > localStorage Ok !'); }
+
+            // Memorize version
+            settings['version']=BKMversion;
+            localStorage.WMEBookmarksSettings=JSON.stringify(settings);
+        }
+
+    }
+    function BKMcheckActiveCountry() { // Check Country and update select
+        var BKMcountryActiveWME = W.model.countries.top.name;
+        if (BKMcountryActive != BKMcountryActiveWME) {
+            if (debug) { console.log('WME Bookmarks Country changed : ' + BKMcountryActive + ' > ' + BKMcountryActiveWME); }
+            BKMcountryActive = BKMcountryActiveWME;
+            select(countries, 'selectCountry');
+            select(countriesS, 'selectCountryS');
+            loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+            loadBookmarks('WMEBookmarksShared', 'divShareContent');
+            getId('selectCountry').onchange = (function () {
+                clearTimeout(timer);
+                BKMcheckActiveCountry();
+                BKMcountryActive = getId('selectCountry').value;
+                getId('divBookmarksContent').innerHTML = '';
+                loadBookmarks('WMEBookmarks', 'divBookmarksContent');
+            });
+            getId('selectCountryS').onchange = (function () {
+                clearTimeout(timer);
+                BKMcheckActiveCountry();
+                BKMcountryActive = getId('selectCountryS').value;
+                getId('divShareContent').innerHTML = '';
+                loadBookmarks('WMEBookmarksShared', 'divShareContent');
+            });
+        }
+        clearTimeout(timer);
+        setTimeout(timer = setTimeout(BKMcheckActiveCountry, 5000),100);
+    }
+    function BMKcheckAutoSave() { //Show shared if sync with server
+        if (BKMsettingsSynchro === true) {
+            $('#iconShare').animate({ width: '24px' }, 200);
+        }
+        else { $('#iconShare').animate({ width: '0' }, 200);
+             }
+    }
+    function BKMtableHtml(container, data, i) { // Bookmarks & Share table (HTML);
+        var div = document.createElement('div');
+        div.className = 'divBKM';
+        div.id = container + i;
+        //NAME
+        var divName = document.createElement('div');
+        divName.className = 'divName';
+        var divNameA = document.createElement('a');
+        divNameA.href = '#';
+        divNameA.id='link'+i;
+        divNameA.innerHTML = '<b>' + data.name.substring(0, 26) + '</b>';
+        divNameA.onclick = (function() { BKMjump(data.country,data.perma,divNameA.id); });
+        if (BKMsettingsClic) {
+            var a=JSON.parse(localStorage.WMEBookmarksSettings);
+            if (divNameA.id===a.lastclic) { divNameA.style.color='#26BAE8'; a.lastclic=divNameA.id; }
+            localStorage.setItem('WMEBookmarksSettings', JSON.stringify(a));
+        }
+        if (typeof(data.comm) != 'undefined') {
+            divNameA.onmouseover = (function () {
+                getId(container + i).style.backgroundColor = '#CBCBCB';
+                getId(container + i).style.borderBottom = '1px dashed #ededed';
+                getId(container + '_Comm_' + i).style.display = 'block';
+            });
+            divNameA.onmouseout = (function () {
+                getId(container + i).style.backgroundColor = '#FFFFFF';
+                getId(container + i).style.borderBottom = '1px solid #ededed';
+                getId(container + '_Comm_' + i).style.display = 'none';
+            });
+        }
+        divName.appendChild(divNameA);
+        div.appendChild(divName);
+        // SUPPR
+        var divSuppr = document.createElement('div');
+        divSuppr.className = 'divSuppr';
+        var divSupprA = document.createElement('a');
+        if (container == 'divShareContent') { divSupprA.innerHTML = '<img title="' + lang[21] + '" src="' + iconShare + '" />'; }
+        else { divSupprA.innerHTML = '<img title="' + lang[11] + '" src="' + iconDelete + '" />'; }
+        divSupprA.href = '#';
+        divSupprA.onclick = (function(){BKMsuppr(data.name,data.perma,container);});
+        divSuppr.appendChild(divSupprA);
+        div.appendChild(divSuppr);
+        // SHARE
+        if (container == 'divBookmarksContent' && BKMsettingsSynchro === true) {
+            var divShare = document.createElement('div');
+            divShare.className = 'divSuppr';
+            var divShareA = document.createElement('a');
+            if (data.share) { divShareA.innerHTML = '<img title="' + data.share + '" src="' + iconShare + '" />'; } //.replace(';', ' ')
+            else { divShareA.innerHTML = '<img title="' + lang[12] + '" src="' + iconNoShare + '" />'; }
+            divShareA.href = '#';
+            divShareA.onclick = (function () {
+                getId('BKMedit').style.height = '225px';
+                BKMedit(data);
+            });
+            divShare.appendChild(divShareA);
+            div.appendChild(divShare);
+        }
+        // RELOCATE
+
+        var divLocate = document.createElement('div');
+        divLocate.className = 'divSuppr';
+        var divLocateA = document.createElement('a');
+        divLocateA.innerHTML = '<img title="' + lang[13] + '" id="iconRelocate_' + i + '" src="' + iconNoRelocate + '" />';
+        divLocateA.href = '#';
+        divLocateA.onclick = (function(){
+            getId('iconRelocate_'+i).src=''+iconRelocate;
+            BKMrelocate(data.perma,data.name,i);
+        });
+        divLocate.appendChild(divLocateA);
+        div.appendChild(divLocate);
+        // COMMENT
+        var divComment = document.createElement('div');
+        divComment.className = 'divSuppr';
+        var divCommentA = document.createElement('a');
+        if (data.comm) { divCommentA.innerHTML = '<img title="' + data.comm + '" src="' + iconComment + '" />'; } //.replace(/%27/g, '&apos;').replace(/"/g, '&quot;').replace(/\<br\>/g, '&#13;')
+        else { divCommentA.innerHTML = '<img title="' + lang[10] + '" src="' + iconNoComment + '" />'; }
+        divCommentA.href = '#';
+        divCommentA.onclick = (function () {
+            getId('BKMedit').style.height = '133px';
+            BKMhtmlEditName(container, data);
+        });
+        if (data.comm) {
+            divCommentA.onmouseover = (function () {
+                getId(container + i).style.backgroundColor = '#CBCBCB';
+                getId(container + i).style.borderBottom = '1px dashed #77aacc';
+                getId(container + '_Comm_' + i).style.display = 'block';
+            });
+            divCommentA.onmouseout = (function () {
+                getId(container + i).style.backgroundColor = '#FFFFFF';
+                getId(container + i).style.borderBottom = '1px solid #C2C2C2';
+                getId(container + '_Comm_' + i).style.display = 'none';
+            });
+        }
+        divComment.appendChild(divCommentA);
+        div.appendChild(divComment);
+        var divSeeComment = document.createElement('div');
+        divSeeComment.className = 'divComment';
+        divSeeComment.id = container + '_Comm_' + i;
+        divSeeComment.innerHTML = data.comm; //.replace(/%27/g, '&apos;').replace(/"/g, '&quot;').replace(/\<br\>/g, '&#13;')
+        div.appendChild(divSeeComment);
+        getId(container).appendChild(div);
+    }
+    function BKMhistoHtml(data) { // Historic table (HTML)
+        var div = document.createElement('div');
+        div.className = 'divBKM';
+        var divName = document.createElement('div');
+        divName.className = 'divName';
+        var divNameA = document.createElement('a');
+        divNameA.href = '#';
+        divNameA.innerHTML = '<font size=-2>'+ data.date +' </font><b>'+ data.name.substring(0, 28) +'</b>';
+        divNameA.onclick = (function(){BKMjump(W.model.countries.top.name, data.perma,'');});
+        divName.appendChild(divNameA);
+        div.appendChild(divName);
+        // SUPPR
+        var divSuppr = document.createElement('div');
+        divSuppr.className = 'divSuppr';
+        var divSupprA = document.createElement('a');
+        divSupprA.innerHTML = '<img title="' + lang[11] + '" src="' + iconDelete + '" />';
+        divSupprA.href = '#';
+        divSupprA.onclick = (function(){BKMsuppr(data.name,data.perma,'divHistoContent');});
+        divSuppr.appendChild(divSupprA);
+        div.appendChild(divSuppr);
+        getId('divHistoContent').appendChild(div);
+    }
+    function select(cArray, selectlist) { // Fill select
+        //Add countries in select
+        BKMcountryActive = W.model.countries.top.name;
+        var CSelect = getId(selectlist);
+        if (CSelect !== null) {
+            CSelect.innerHTML = '';
+            for (var k = 0; cArray[k]; k++) {
+                var cList = document.createElement('option');
+                cList.value =cArray[k];
+                cList.text = cArray[k];
+                if (cArray[k] == BKMcountryActive) cList.selected = true;
+                CSelect.appendChild(cList);
+            }
+            //If country not listed
+            if (cArray.indexOf(BKMcountryActive) == - 1) {
+                cList = document.createElement('option');
+                cList.value = BKMcountryActive;
+                cList.text = BKMcountryActive;
+                cList.selected = true;
+                CSelect.appendChild(cList);
+            }
+        }
+    }
+    function mapLoaded() { // Test map server and change it if necessary
+        if(typeof(W.model.countries.top) === 'undefined' || W.model.countries.top === null) { setTimeout(mapLoaded, 500); return; }
+        var loc=W.model.countries.top.env.replace('NA','usa').toLowerCase();
+        if (BKMsettingsServer && loc !== W.app.getAppRegionCode()) {
+            var a = JSON.parse(localStorage.mapLocation);
+            a[loc]=a[W.app.getAppRegionCode()];
+            localStorage.setItem('mapLocation', JSON.stringify(a));
+            W.map.mapState.updateMapLocation(loc);
+        }
+    }
+    function layersLoaded(layers) { // Load layers when jump
+        var num = Number(layers).toString(2);
+        num = num.split('').reverse().join('');
+        // First : groups
+        layerCheck("group_issues", num.charAt(0));
+        layerCheck("group_map_issues", num.charAt(1));
+        layerCheck("group_parking_issues", num.charAt(7));
+        layerCheck("group_places", num.charAt(11));
+        layerCheck("group_road", num.charAt(15));
+        layerCheck("group_display", num.charAt(20));
+        layerCheck("group_cities", num.charAt(27));
+        // Second : items
+        layerCheck("item_map_problems", num.charAt(2));
+        layerCheck("item_closed_map_problems", num.charAt(3));
+        layerCheck("item_update_requests", num.charAt(4));
+        layerCheck("item_closed_update_requests", num.charAt(5));
+        layerCheck("item_place_update_requests", num.charAt(6));
+        layerCheck("item_parking_map_problems", num.charAt(8));
+        layerCheck("item_parking_closed_map_problems", num.charAt(9));
+        layerCheck("item_parking_place_update_requests", num.charAt(10));
+        layerCheck("item_venues", num.charAt(12));
+        layerCheck("item_residential_places", num.charAt(13));
+        layerCheck("item_parking_places", num.charAt(14));
+        layerCheck("item_road", num.charAt(16));
+        layerCheck("item_junction_boxes", num.charAt(17));
+        layerCheck("item_closures", num.charAt(18));
+        layerCheck("item_speed_cameras", num.charAt(19));
+        layerCheck("item_satellite_imagery", num.charAt(21));
+        layerCheck("item_area_managers", num.charAt(22));
+        layerCheck("item_gps_points", num.charAt(23));
+        layerCheck("item_live_users", num.charAt(24));
+        layerCheck("item_editable_areas", num.charAt(25));
+        layerCheck("item_disallowed_turns", num.charAt(29));
+        layerCheck("item_map_comments", num.charAt(26));
+        layerCheck("item_city_names", num.charAt(28));
+
+        function layerCheck(layerName, state) {
+            try {
+                if (getId("layer-switcher-"+layerName).checked && state==0 || getId("layer-switcher-"+layerName).checked===false && state==1) { getId("layer-switcher-"+layerName).click(); }
+            } catch (e) { console.log("error while check layers: ", e); }
+        }
+    }
+    function BKMaddHisto(perma) { // Add link in historic
+        var lStorage=JSON.parse(localStorage.WMEHistoric), bNew={};
+        if (Object.keys(lStorage).length >= 30) { lStorage.splice(0, 1); }
+        bNew.date=new Date().toLocaleString();
+        bNew.perma=perma;
+        bNew.name=getName();
+        lStorage.push(bNew);
+        localStorage.setItem('WMEHistoric', JSON.stringify(lStorage));
+        loadBookmarks('WMEHistoric', 'divHistoContent');
+    }
+    function objectsIsLoaded(selObjects) {
+        if (debug) { console.log('objectsIsLoaded',selObjects); }
+        if (selObjects) {
+            var objectsList = [], idObj=selObjects.substring(3).split(',');
+            try {
+                for (var i=0; idObj[i]; i++) {
+                    // Identify type
+                    switch (selObjects.substring(0, 2)) {
+                        case 'sg':
+                            var objType = W.selectionManager.model.segments.objects[idObj[i]];
+                            var type = I18n.translations[I18n.locale].layers.name.segments;
+                            break;
+                        case 'nd':
+                            var objType = W.selectionManager.model.nodes.objects[idObj[i]];
+                            var type = I18n.translations[I18n.locale].layers.name.nodes;
+                            break;
+                        case 'vn':
+                            var objType = W.selectionManager.model.venues.objects[idObj[i]];
+                            var type = I18n.translations[I18n.locale].layers.name.landmarks;
+                            break;
+                        case 'ur':
+                            var objType="UR";
+                            var type = I18n.translations[I18n.locale].layers.name.update_requests;
+                            break;
+                        case 'mp':
+                            var objType="MP";
+                            var type = I18n.translations[I18n.locale].layers.name.problems;
+                            break;
+                        case 'mc':
+                            var objType = W.selectionManager.model.mapComments.objects[idObj[i]];
+                            var type = I18n.translations[I18n.locale].layers.name.comments;
+                            break;
+                        default : break;
+                    }
+                    // Try to select
+                    if ((typeof objType === 'undefined' || typeof objType === 'string') &&
+                        typeof W.map.updateRequestLayer.markers[idObj[i]] === 'undefined' &&
+                        typeof W.map.problemLayer.markers[String(idObj[i].replace('%2F','/'))] === 'undefined'
+                       ) {
+                        count++;
+                        if (debug) { console.info('LOOP (' + count + '): try to select' + idObj[i]); }
+                        if (count >= 10) {
+                            alert(type +'\n'+ I18n.translations[I18n.locale].problems.panel.more_info.not_available);
+                            count=0;
+                            setTimeout(function () {
+                                BKMmapSearch.style.backgroundColor = '';
+                                BKMmapSearch.style.color='';
+                                BKMmapSearch.value='';
+                                BKMmapSearch.placeholder=lang[17];
+                            }, 2000);
+                            return;
+                        }
+                        setTimeout((function(){ objectsIsLoaded(selObjects); }), 750);
+                        return;
+                    }
+                    else {
+                        if (debug) { console.info('LOOP : found '+type+' :' + idObj[i]); }
+                        if (selObjects.substring(0, 2) === 'ur') { W.map.updateRequestLayer.markers[idObj[i]].icon.$div[0].click(); }
+                        else if (selObjects.substring(0, 2) === 'mp') { W.map.problemLayer.markers[String(idObj[i].replace('%2F','/'))].icon.$div[0].click(); }
+                        else if (selObjects.substring(0, 2) === 'vn') { objectsList.push(W.model.venues.objects[idObj[i]]); }
+                        else if (selObjects.substring(0, 2) === 'nd') { objectsList.push(W.model.nodes.objects[idObj[i]]); }
+                        else { objectsList.push(W.model.segments.objects[idObj[i]]); }
+                        count=0;
+                    }
+                }
+            } catch (e) {
+                console.log("error while getting selected item: ", e);
+            }
+            selObjects = '';
+            if (objType !== "none") {
+                W.selectionManager.unselectAll();
+                W.selectionManager.setSelectedModels(objectsList);
+            }
+            colorSearch(type);
+        }
+    }
+    function BKMconvertPermalink(data) { //Redo permalink
+        if (data) {
+            var l=data.split("|"), link = {};
+            link.env=l[5];
+            link.lat=l[1];
+            link.lon=l[0];
+            link.zoom=l[2];
+            link.layers=l[3];
+            link.MP=l[6];
+            link.UR=l[7];
+            link.MC=l[8];
+            if (l[4]) {
+                switch (l[4].substring(0, 1)) {
+                    case 's': link.segments = l[4].substring(2); break;
+                    case 'n': link.nodes = l[4].substring(2); break;
+                    case 'v': link.venues = l[4].substring(2); break;
+                }
+            }
+            Object.keys(link).sort();
+            return link;
+        }
+    }
+    function colorSearch(msg) {
+        setTimeout(function () {
+            BKMmapSearch.style.backgroundColor='#4d4d4d';
+            BKMmapSearch.style.color='white';
+            (msg ? msg=msg+': ' : msg='')
+            BKMmapSearch.value=msg+lang[18];
+        }, 500);
+        setTimeout(function () {
+            BKMmapSearch.style.backgroundColor = '';
+            BKMmapSearch.style.color='';
+            BKMmapSearch.value='';
+            BKMmapSearch.placeholder=lang[17];
+        }, 2000);
+    }
+
+    // ***********************
+    // ** ANIMATE FUNCTIONS **
+    // ***********************
+
+    function bookmarksToggle() {
+        $('#divBookmarks').css('visibility', 'visible');
+        $('#divContent').css('display', 'block');
+        $('#divBookmarks').slideDown();
+        $('#divShare').slideUp();
+        $('#divHisto').slideUp();
+        $('#divBackup').slideUp();
+        $('#divSettings').slideUp();
+        $('#BKMedit').slideUp(200);
+        $('#iconBookmarks').attr('src', '' + iconBookmarks);
+        $('#iconShare').attr('src', '' + iconNoShare);
+        $('#iconHisto').attr('src', '' + iconNoHisto);
+        $('#iconBackup').attr('src', '' + iconNoBackup);
+        $('#iconSettings').attr('src', '' + iconNoSettings);
+        BKMcheckActiveCountry();
+        reloadHtmlBookmarks();
+        if (BKMsettingsSynchro === true) { getBookmarks(); }
+    }
+    function shareToggle() {
+        $('#divShare').css('visibility', 'visible');
+        $('#divContent').css('display', 'block');
+        $('#divBookmarks').slideUp();
+        $('#divShare').slideDown();
+        $('#divHisto').slideUp();
+        $('#divBackup').slideUp();
+        $('#divSettings').slideUp();
+        $('#BKMedit').slideUp(200);
+        $('#iconBookmarks').attr('src', '' + iconNoBookmarks);
+        $('#iconShare').attr('src', '' + iconShare);
+        $('#iconHisto').attr('src', '' + iconNoHisto);
+        $('#iconBackup').attr('src', '' + iconNoBackup);
+        $('#iconSettings').attr('src', '' + iconNoSettings);
+        BKMcheckActiveCountry();
+        getShared();
+    }
+    function histoToggle() {
+        $('#divHisto').css('visibility', 'visible');
+        $('#divContent').css('display', 'block');
+        $('#divBookmarks').slideUp();
+        $('#divShare').slideUp();
+        $('#divHisto').slideDown();
+        $('#divBackup').slideUp();
+        $('#divSettings').slideUp();
+        $('#BKMedit').slideUp(200);
+        $('#iconBookmarks').attr('src', '' + iconNoBookmarks);
+        $('#iconShare').attr('src', '' + iconNoShare);
+        $('#iconHisto').attr('src', '' + iconHisto);
+        $('#iconBackup').attr('src', '' + iconNoBackup);
+        $('#iconSettings').attr('src', '' + iconNoSettings);
+        loadBookmarks('WMEHistoric', 'divHistoContent');
+    }
+    function backupToggle() {
+        $('#divBackup').css('visibility', 'visible');
+        $('#divContent').css('display', 'block');
+        $('#divBookmarks').slideUp();
+        $('#divShare').slideUp();
+        $('#divHisto').slideUp();
+        $('#divBackup').slideDown();
+        $('#divSettings').slideUp();
+        $('#BKMedit').slideUp(200);
+        $('#iconBookmarks').attr('src', '' + iconNoBookmarks);
+        $('#iconShare').attr('src', '' + iconNoShare);
+        $('#iconHisto').attr('src', '' + iconNoHisto);
+        $('#iconBackup').attr('src', '' + iconBackup);
+        $('#iconSettings').attr('src', '' + iconNoSettings);
+        BKMbackup();
+    }
+    function settingsToggle() {
+        $('#divSettings').css('visibility', 'visible');
+        $('#divContent').css('display', 'block');
+        $('#divBookmarks').slideUp();
+        $('#divShare').slideUp();
+        $('#divHisto').slideUp();
+        $('#divBackup').slideUp();
+        $('#divSettings').slideDown();
+        $('#BKMedit').slideUp(200);
+        $('#iconBookmarks').attr('src', '' + iconNoBookmarks);
+        $('#iconShare').attr('src', '' + iconNoShare);
+        $('#iconHisto').attr('src', '' + iconNoHisto);
+        $('#iconBackup').attr('src', '' + iconNoBackup);
+        $('#iconSettings').attr('src', '' + iconSettings);
+        loadSettings();
+    }
+
+    console.log('WME Bookmarks : ' + BKMversion + ' starting');
+    BKMinit();
+}
+var BKMscript = document.createElement('script');
+BKMscript.textContent = '' + runBKM.toString() + ' \n' + 'runBKM();';
+BKMscript.setAttribute('type', 'application/javascript');
+document.body.appendChild(BKMscript);

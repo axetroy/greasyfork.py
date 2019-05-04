@@ -1,0 +1,41 @@
+// ==UserScript==
+// https://github.com/hannsen/userscripts
+// @name        Rutorrent GetMulitpleTorrents
+// @namespace   rutorrent
+// @description gets multiple torrents which you select in rutorrent
+// @include     http://*ruTorrent*
+// @include     https://*ruTorrent*
+// @version     3.0
+// @grant       none
+// ==/UserScript==
+
+var nav_bar = document.getElementById("t");
+
+var unfoldLink = document.createElement('a');
+var newHTML = document.createElement('div');
+newHTML.id = 'moved';
+unfoldLink.appendChild(newHTML);
+unfoldLink.id = 'grab';
+unfoldLink.title = 'Download selected torrent files';
+unfoldLink.href = 'javascript:void(0)';
+
+if (nav_bar) {
+  nav_bar.appendChild(unfoldLink);
+  document.getElementById('grab').addEventListener('click', getTorrents, false);
+}
+
+function getTorrents() {
+  var selected = document.getElementsByClassName("selected");
+  var dl_link = 'plugins/source/action.php?hash=';
+
+  if ('/' != window.location.toString().slice(-1)) {
+    dl_link = '/' + dl_link;
+  }
+
+  for (var i = 0; i < (selected.length - 1); i++) {
+    var hash = selected[i].id;
+    if (hash && hash.match(/[A-F0-9]{40}/i)) {
+      window.open(window.location + dl_link + hash);
+    }
+  }
+}

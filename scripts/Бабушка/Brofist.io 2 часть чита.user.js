@@ -1,0 +1,81 @@
+// ==UserScript==
+// @name        Brofist.io 2 часть чита
+// @namespace   tampermonkey.net
+// @include     http*://brofist.io/*
+// @version     1.03
+// @description Специально для русских! (време-убивательный чит Brofist 2play)
+// @grant       none
+// ==/UserScript==
+
+var isCheat = false;
+document.getElementsByTagName('body')[0].onkeypress = function(e){
+    var which = e.which;
+    if(which == 51){
+        isCheat = !isCheat;
+        if (isCheat){
+            console.log('cheat on');
+        } else{
+            console.log('cheat off');
+        }
+    }
+};
+document.getElementsByTagName('body')[0].onkeydown = function(e) {
+    
+    var keyCode = e.keyCode;
+    if(!isCheat){
+        return true;
+    }
+    if(keyCode == 81){
+        plyer.shapes[0].body.position[0] -= 1;
+        console.log('position horizontal: -1');
+    }
+    if(keyCode == 87){
+        plyer.shapes[0].body.position[0] += 1;
+        console.log('position horizontal: +1');
+    }
+    if(keyCode == 69){
+        plyer.shapes[0].body.position[1] -= 1;
+        console.log('position vertical: -1');
+    }
+    if(keyCode == 82){
+        plyer.shapes[0].body.position[1] += 1;
+        console.log('position vertical: +1');
+    }
+    if(keyCode == 65){
+        plyer.velocityValue += 50;
+        console.log('speed: +50');
+    }
+    if(keyCode == 83){
+        plyer.velocityValue -= 50;
+        console.log('speed: -50');
+    }
+    if(keyCode == 90){
+        plyer.world.gravity[1] = 9.779999732971191;
+        console.log('has up gravity');
+    }
+    if(keyCode == 67){
+        plyer.world.gravity[1] = 0;
+        console.log('has not gravity');
+    }
+    if(keyCode == 88){
+        plyer.world.gravity[1] = -9.779999732971191;
+        console.log('has down gravity');
+    }
+    if(keyCode == 49){
+        plyer.jumpValue = 1600;
+        console.log('high jump');
+    }
+    if(keyCode == 50){
+        plyer.jumpValue =800;
+        console.log('short jump');
+    }
+    if(keyCode == 68){
+        plyer.shapes[0].collisionResponse = false;
+        console.log('has not collision');
+    }
+    if(keyCode == 70){
+        plyer.shapes[0].collisionResponse = true;
+        console.log('has collision');
+    }
+    console.log(keyCode);
+};﻿

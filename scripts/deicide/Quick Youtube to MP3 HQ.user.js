@@ -1,0 +1,40 @@
+// ==UserScript==
+// @name                Quick Youtube to MP3 HQ
+// @author              Rinrynque (thanks to him) & modded by Deicide
+// @namespace           https://greasyfork.org/fr/users/30595-deicide
+// @description	        simple button to save youtube's video as mp3
+// @include		        https://*youtube.com/*
+// @include		        http://*youtube.com/*
+// @icon                data:image/jpeg;base64,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
+// @version             1.1
+// @run-at              document-end
+// @grant               none
+// @noframes
+// ==/UserScript==
+var fireOnHashChangesToo    = true;
+var pageURLCheckTimer       = setInterval (
+    function () {
+        if (   this.lastPathStr  !== location.pathname
+            || this.lastQueryStr !== location.search
+            || (fireOnHashChangesToo && this.lastHashStr !== location.hash)
+        ) {
+            this.lastPathStr  = location.pathname;
+            this.lastQueryStr = location.search;
+            this.lastHashStr  = location.hash;
+            gmMain ();
+        }
+    }
+    , 111
+);
+
+function gmMain () {
+ setTimeout(function(){ 
+    var elmNewContent = document.createElement('a');
+    elmNewContent.id = 'DLButton';
+    elmNewContent.href = 'http://youtubeinmp3.com/fetch/?video='+encodeURIComponent(document.URL)+"&hq=1";
+    elmNewContent.target = '_blank';
+    elmNewContent.innerHTML =  "Download as MP3  <img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAIAAADYhlU4AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYxIDY0LjE0MDk0OSwgMjAxMC8xMi8wNy0xMDo1NzowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDowNzgwMTE3NDA3MjA2ODExQkY2N0E2RDFCNzEzODIzRCIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozNTM1QzNEMzg2MDUxMUUxQjVFMkZFNjJBNkY5RTc2MCIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozNTM1QzNEMjg2MDUxMUUxQjVFMkZFNjJBNkY5RTc2MCIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1LjEgTWFjaW50b3NoIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6NEEwQTJGMjU4QzIwNjgxMTgyNDREMzk0NjI0RkVFODUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6MDc4MDExNzQwNzIwNjgxMUJGNjdBNkQxQjcxMzgyM0QiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4ViVciAAABjElEQVR42uyXW4uCUBSFvYWXmkB6qUfp2fwr/fTEIFCKMBDUKATzEqWzSBim8Fo68+J+OnXa7k/O2WvtyMvl4vu+67pJkhCtBsuys9mMpmnmfD5vNps0TYkOwrZtRVHo5XJ5u92IbgJPZhBRFJX/ThAEWZZztyzLOhwO5elhGDKVLBRFjcfj3K3T6VSZjlOgiO6jr9HX6Gv8b418LZlOp6IoZuvBYFCUPJlMoHg/8rfdbnMNIr/G8Xicz+dQw3LAr0dk69VqVeRAVJEmI6e+5uMN4HKNzwP+uF6v6xRwHGe327155kADYHkB+HQlSsW9AiAwi3av16uqqvf7/dO7C0zA5pqPpmlBELTQH8AELJBfvtd1vY4P1u1BwAL59+wCJzdNs+U+BzLAs7XneRiXOtESgAM/O+dGAx/TSHmAj+aP4/hNvRoOh5gb6+QUjUIvET/iqcZisRiNRi3K7X6/NwzjqQaaoN2xOptASZJkOI7LPuB2dmEePM9TkiShVEfuhBeAFZF/8P/jW4ABAJOC4ZIVBAdPAAAAAElFTkSuQmCC height='12' width='12'>" ;
+    var elmFoo = document.getElementById('watch7-views-info');
+    elmFoo.parentNode.insertBefore(elmNewContent, elmFoo);
+  }, 1000);   
+}

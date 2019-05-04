@@ -1,0 +1,11 @@
+// ==UserScript==
+// @name         messagePreview
+// @namespace    https://github.com/yegorgunko/shikme-tools
+// @version      0.3
+// @description  Preview the whole message
+// @author       Yegor Gunko
+// @match        https://shikme.ru/
+// @icon         https://shikme.ru/default_images/icon.png?v=1528136794
+// @grant        none
+// ==/UserScript==
+const autoExpand=e=>{e.style.height="inherit";const t=window.getComputedStyle(e),n=parseInt(t.getPropertyValue("border-top-width"),10)+parseInt(t.getPropertyValue("padding-top"),10)+e.scrollHeight+parseInt(t.getPropertyValue("padding-bottom"),10)+parseInt(t.getPropertyValue("border-bottom-width"),10);e.style.height=`${n}px`},syncValue=(e,t)=>{e.value=t,autoExpand(e)},messagePreview=()=>{const e=document.createElement("style");e.type="text/css",e.id="messagePreviewStyles",e.appendChild(document.createTextNode(".msg-preview{position:relative;display:inline-block}.msg-preview-content{display:none;position:fixed;bottom:5.5rem}.msg-preview-text{max-height:70vh;min-width:60vw;padding:1em}")),document.head.appendChild(e),document.getElementById("td_input").insertAdjacentHTML("beforebegin",'<div class=msg-preview><td value=0 class="input_item main_item" id=messagePreview><i id=messagePreviewIcon class="fa fa-chevron-up"></i></td><div id=messagePreviewContent class=msg-preview-content><textarea class=msg-preview-text id=messagePreviewText></textarea></div></div>');const t=document.getElementById("content"),n=document.getElementById("messagePreviewText");document.getElementById("messagePreview").addEventListener("click",()=>{const e=document.getElementById("messagePreviewContent"),s=document.getElementById("messagePreviewIcon");({value:n.value}=t),"block"===e.style.display?(s.className="fa fa-chevron-up",e.style.display="none",t.focus()):(s.className="fa fa-chevron-down",e.style.display="block",n.focus())}),t.addEventListener("input",e=>syncValue(n,e.target.value)),n.addEventListener("input",e=>syncValue(t,e.target.value))};document.addEventListener("DOMContentLoaded",messagePreview(),!1);
