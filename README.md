@@ -22,7 +22,7 @@
 python3 entrypoint.py
 ```
 
-## 爬取的数据
+## 爬取到的数据
 
 https://github.com/axetroy/greasyfork.py/tree/gh-pages
 
